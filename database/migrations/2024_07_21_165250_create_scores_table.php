@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('scores', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('application_id')->constrained('applications')->cascadeOnDelete();
+            $table->foreignId('application_id')->constrained('applicants')->cascadeOnDelete();
             $table->foreignId('criteria_id')->constrained('criterias')->cascadeOnDelete();
             $table->float('score')->comment('Skor');
             $table->timestamps();

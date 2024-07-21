@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('education', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('applicant_id')->constrained('applicant')->cascadeOnDelete();
+            $table->foreignId('applicant_id')->constrained('applicants')->cascadeOnDelete();
             $table->enum('education_level', ['SMA/SMK', 'D1', 'D2', 'D3', 'D4', 'S1']);
             $table->string('institution_name')->comment('Nama Instansi / Pendidikan');
             $table->string('major')->comment('Jurusan / Program Studi');
