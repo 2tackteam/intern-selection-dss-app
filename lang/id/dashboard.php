@@ -18,7 +18,7 @@ return [
     'welcome' => [
         'Selamat datang di Dashboard Sistem Pendukung Keputusan Seleksi Peserta Magang',
         'Aplikasi ini dirancang untuk membantu Anda dalam proses seleksi peserta magang secara efisien dan objektif. Dengan fitur-fitur canggih yang kami sediakan, Anda dapat menilai dan memilih kandidat terbaik sesuai dengan kriteria yang telah ditetapkan.',
-        'Mari mulai proses seleksi dengan tepat dan akurat!'
+        'Mari mulai proses seleksi dengan tepat dan akurat!',
     ],
 
 ];

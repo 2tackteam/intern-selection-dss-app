@@ -12,6 +12,7 @@ class Applicant extends Model
     use HasFactory;
 
     protected $table = 'applicants';
+
     protected $guarded = ['id'];
 
     public function user(): BelongsTo
@@ -24,7 +25,8 @@ class Applicant extends Model
         return $this->hasMany(Education::class);
     }
 
-    public function documents(): HasMany{
+    public function documents(): HasMany
+    {
         return $this->hasMany(Document::class);
     }
 

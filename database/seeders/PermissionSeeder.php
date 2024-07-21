@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -18,7 +17,6 @@ class PermissionSeeder extends Seeder
         // Reset cached roles and permissions
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-
         $permissions = [
             'view-menu dashboard',
             'view-menu manage-applicant',
@@ -32,13 +30,12 @@ class PermissionSeeder extends Seeder
 
             'update profile',
             'update password',
-            'delete account'
+            'delete account',
         ];
 
         foreach ($permissions as $permission) {
             Permission::create(['name' => "$permission"]);
         }
-
 
         Role::create(['name' => 'admin'])->givePermissionTo($permissions);
         Role::create(['name' => 'user'])->syncPermissions([
@@ -51,7 +48,7 @@ class PermissionSeeder extends Seeder
 
             'update profile',
             'update password',
-            'delete account'
+            'delete account',
         ]);
     }
 }

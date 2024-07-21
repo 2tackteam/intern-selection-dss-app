@@ -11,6 +11,7 @@ class Document extends Model
     use HasFactory;
 
     protected $table = 'documents';
+
     protected $guarded = ['id'];
 
     public function applicant(): BelongsTo

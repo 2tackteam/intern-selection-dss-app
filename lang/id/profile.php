@@ -17,15 +17,15 @@ return [
 
     'profile_info' => [
         'title' => 'Informasi Profil',
-        'subtitle' => "Perbarui informasi profil dan alamat email akun Anda.",
+        'subtitle' => 'Perbarui informasi profil dan alamat email akun Anda.',
     ],
     'update_password' => [
         'title' => 'Perbarui Kata Sandi',
-        'subtitle' => "Pastikan akun Anda menggunakan kata sandi yang panjang dan acak agar tetap aman.",
+        'subtitle' => 'Pastikan akun Anda menggunakan kata sandi yang panjang dan acak agar tetap aman.',
     ],
     'delete_account' => [
         'title' => 'Hapus Akun',
-        'subtitle' => "Setelah akun Anda dihapus, semua sumber daya dan datanya akan dihapus secara permanen. Sebelum menghapus akun Anda, silakan unduh data atau informasi apa pun yang ingin Anda simpan.",
+        'subtitle' => 'Setelah akun Anda dihapus, semua sumber daya dan datanya akan dihapus secara permanen. Sebelum menghapus akun Anda, silakan unduh data atau informasi apa pun yang ingin Anda simpan.',
     ],
 
     'buttons' => [
@@ -35,8 +35,8 @@ return [
     'modals' => [
         'delete_account' => [
             'title' => 'Apakah Anda yakin ingin menghapus akun Anda?',
-            'subtitle' => 'Setelah akun Anda dihapus, semua sumber daya dan datanya akan dihapus secara permanen. Masukkan kata sandi Anda untuk mengonfirmasi bahwa Anda ingin menghapus akun Anda secara permanen.'
-        ]
+            'subtitle' => 'Setelah akun Anda dihapus, semua sumber daya dan datanya akan dihapus secara permanen. Masukkan kata sandi Anda untuk mengonfirmasi bahwa Anda ingin menghapus akun Anda secara permanen.',
+        ],
     ],
 
     'messages' => [

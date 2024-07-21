@@ -11,6 +11,7 @@ class Education extends Model
     use HasFactory;
 
     protected $table = 'educations';
+
     protected $guarded = ['id'];
 
     public function applicant(): BelongsTo

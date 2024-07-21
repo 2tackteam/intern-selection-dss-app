@@ -11,6 +11,7 @@ class Criteria extends Model
     use HasFactory;
 
     protected $table = 'criterias';
+
     protected $guarded = ['id'];
 
     public function scores(): HasMany
