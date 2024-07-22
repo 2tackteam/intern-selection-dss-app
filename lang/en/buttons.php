@@ -16,4 +16,5 @@ return [
     'save' => 'Save',
     'cancel' => 'Cancel',
     'delete_account' => 'Delete Account',
+    'back' => 'Back',
 ];

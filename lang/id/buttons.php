@@ -16,4 +16,5 @@ return [
     'save' => 'Simpan',
     'cancel' => 'Batal',
     'delete_account' => 'Hapus Akun',
+    'back' => 'Kembali'
 ];
