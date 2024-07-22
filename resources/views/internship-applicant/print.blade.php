@@ -48,7 +48,13 @@
                                     </div>
                                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                         <dt class="text-sm font-medium leading-6 text-gray-900 dark:text-gray-100">{{ __('internship-applicant.show.gpa') }}</dt>
-                                        <dd class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-200 sm:col-span-2 sm:mt-0">{{ $application->education->gpa }}</dd>
+                                        <dd class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-200 sm:col-span-2 sm:mt-0">
+                                            @if($application->education->education_level === 'SMA/SMK')
+                                                {{ $application->education->gpa }}
+                                            @else
+                                                {{ round($application->education->gpa / 100 * 4, 2) }} ({{ $application->education->gpa }})
+                                            @endif
+                                        </dd>
                                     </div>
                                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                         <dt class="text-sm font-medium leading-6 text-gray-900 dark:text-gray-100">{{ __('internship-applicant.show.status') }}</dt>
