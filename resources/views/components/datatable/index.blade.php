@@ -102,6 +102,7 @@
 
     <script>
         var datatable = $('.datatable').DataTable({
+            order: [],
             processing: true,
             serverSide: false,
             paging: false,          // Disable pagination

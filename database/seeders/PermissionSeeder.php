@@ -19,14 +19,13 @@ class PermissionSeeder extends Seeder
 
         $permissions = [
             'view-menu dashboard',
-            'view-menu manage-applicant',
-            'view-menu applicant',
+            'view-menu internship-applicants',
+            'view-menu application-submissions',
             'view-menu profile',
 
-            'view applicants',
-            'create applicants',
-            'update applicants',
-            'delete applicants',
+            'view internship-applicants',
+            'print internship-applicants',
+            'selection internship-applicants',
 
             'update profile',
             'update password',
@@ -40,11 +39,12 @@ class PermissionSeeder extends Seeder
         Role::create(['name' => 'admin'])->givePermissionTo($permissions);
         Role::create(['name' => 'user'])->syncPermissions([
             'view-menu dashboard',
-            'view-menu applicant',
+            'view-menu application-submissions',
             'view-menu profile',
 
-            'view applicants',
-            'create applicants',
+            'view applications',
+            'create applications',
+            'print applications',
 
             'update profile',
             'update password',

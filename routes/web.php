@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/', [InternshipApplicantController::class, 'index'])->name('index');
             Route::get('/{application}', [InternshipApplicantController::class, 'show'])->name('show');
             Route::get('/{application}/print', [InternshipApplicantController::class, 'print'])->name('print');
+            Route::get('/applicant/selection', [InternshipApplicantController::class, 'applicantSelection'])->name('applicant-selection');
         });
 });
 

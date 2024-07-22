@@ -14,10 +14,10 @@
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="contain-inline-size">
 
-                    <x-primary-button class="mb-4">
+                    <x-link-button class="mb-4" href="{{ route('internship-applicants.applicant-selection') }}">
                         <i class="fas fa-filter mr-2"></i>
                         {{__('internship-applicant.buttons.selection')}}
-                    </x-primary-button>
+                    </x-link-button>
 
                     <x-datatable :id="'dtApplicants'" :collection="$data['applicants']">
                         <x-slot:thead>

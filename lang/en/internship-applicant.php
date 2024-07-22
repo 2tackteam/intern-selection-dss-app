@@ -32,7 +32,10 @@ return [
         'major' => 'Major',
         'academic_year' => 'Academic Year',
         'gpa' => 'GPA',
-        'status' => 'Status'
+        'status' => 'Status',
+    ],
+    'selection' => [
+        'page_title' => 'Selection of Internship Applicants',
     ],
 
 
@@ -44,13 +47,21 @@ return [
             'gender' => 'Gender',
             'last_education' => 'Last Education',
             'actions' => 'Actions',
+
+            'ranking' => 'Ranking',
+            'name' => 'Applicant Name',
+            'email' => 'Email',
+            'major' => 'Major',
+            'education' => 'Education',
+            'gpa' => 'GPA',
+            'score' => 'Selection Score',
         ],
     ],
 
     'buttons' => [
         'selection' => 'Participant Selection',
         'detail' => 'Details',
-        'print' => 'Print'
+        'print' => 'Print',
     ],
 
     'gender' => [
@@ -61,8 +72,8 @@ return [
     'status' => [
         'pending' => 'Pending',
         'accepted' => 'Accepted',
-        'rejected' => 'Rejected'
-    ]
+        'rejected' => 'Rejected',
+    ],
 
     //
     //'modals' => [

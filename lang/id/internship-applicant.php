@@ -29,8 +29,11 @@ return [
         'institution_name' => 'Nama Instansi',
         'major' => 'Jurusan',
         'academic_year' => 'Tahun Akademik',
-        'gpa' => 'Nilai Rata-rata / GPA',
-        'status' => 'Status'
+        'gpa' => 'IPK / Nilai Rata-rata',
+        'status' => 'Status',
+    ],
+    'selection' => [
+        'page_title' => 'Seleksi Pelamar Magang',
     ],
 
     'tables' => [
@@ -41,13 +44,22 @@ return [
             'gender' => 'Jenis Kelamin',
             'last_education' => 'Pendidikan Terakhir',
             'actions' => 'Aksi',
+
+
+            'ranking' => 'Ranking',
+            'name' => 'Nama Pelamar',
+            'email' => 'Alamat Email',
+            'major' => 'Jurusan',
+            'education' => 'Pendidikan',
+            'gpa' => 'IPK / Nilai Rata-rata',
+            'score' => 'Nilai Seleksi',
         ],
     ],
 
     'buttons' => [
         'selection' => 'Seleksi Peserta',
         'detail' => 'Detail',
-        'print' => 'Cetak'
+        'print' => 'Cetak',
     ],
 
     'gender' => [
@@ -58,8 +70,8 @@ return [
     'status' => [
         'pending' => 'Menunggu',
         'accepted' => 'Diterima',
-        'rejected' => 'Ditolak'
-    ]
+        'rejected' => 'Ditolak',
+    ],
 
     //'modals' => [
     //    'delete_account' => [
