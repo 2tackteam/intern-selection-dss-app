@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('scores', function (Blueprint $table) {
+        Schema::create('sub_criterias', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('application_id')->constrained('applicants')->cascadeOnDelete();
-            $table->foreignId('criteria_id')->constrained('criterias')->cascadeOnDelete();
-            $table->float('score')->comment('Skor');
+            $table->foreignId('criteria_id')->constrained('criterias');
+            $table->string('name')->comment('Nama Sub Kriteria');
+            $table->decimal('weight', 5, 2)->comment('Bobot Kriteria');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('scores');
+        Schema::dropIfExists('sub_criterias');
     }
 };

@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $gpa IPK atau nilai rata-rata
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Applicant $applicant
+ * @property-read \App\Models\Application $applicant
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Education newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Education newQuery()
@@ -45,6 +45,6 @@ class Education extends Model
 
     public function applicant(): BelongsTo
     {
-        return $this->belongsTo(Applicant::class);
+        return $this->belongsTo(Application::class);
     }
 }

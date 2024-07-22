@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('documents', function (Blueprint $table) {
+        Schema::create('scores', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('applicant_id')->constrained('applicants')->cascadeOnDelete();
-            $table->string('file_path')->nullable();
-            $table->enum('file_type', ['photo', 'transcript', 'cv', 'cover_letter', 'certification', 'recommendation', 'portfolio'])->nullable();
+            $table->foreignId('application_id')->constrained('applications')->cascadeOnDelete();
+            $table->float('final_score')->comment('Skor AKhir');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('documents');
+        Schema::dropIfExists('scores');
     }
 };

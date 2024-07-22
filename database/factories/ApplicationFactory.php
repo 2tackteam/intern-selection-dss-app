@@ -6,9 +6,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Applicant>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Application>
  */
-class ApplicantFactory extends Factory
+class ApplicationFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -23,9 +23,6 @@ class ApplicantFactory extends Factory
             'birth_date' => $this->faker->date(),
             'birth_place' => $this->faker->city(),
             'gender' => $this->faker->randomElement(['M', 'F']),
-            'address' => $this->faker->address(),
-            'phone_number' => $this->faker->phoneNumber(),
-            'identity_number' => $this->faker->randomElement([null, $this->faker->creditCardNumber]),
         ];
     }
 }

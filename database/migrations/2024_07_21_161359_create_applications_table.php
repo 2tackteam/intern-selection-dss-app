@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('applicants', function (Blueprint $table) {
+        Schema::create('applications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('full_name')->comment('Nama Lengkap');
             $table->string('birth_place')->comment('Tempat Lahir');
             $table->date('birth_date')->comment('Tanggal Lahir');
             $table->enum('gender', ['M', 'F'])->comment('Jenis Kelamin');
-            $table->text('address')->comment('Alamat');
-            $table->string('phone_number', 20)->comment('Nomor Telepon');
-            $table->string('identity_number', 50)->nullable()->comment('Nomor KTP atau kartu identitas lainnya');
+            $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending')->comment('Status');
             $table->timestamps();
         });
     }

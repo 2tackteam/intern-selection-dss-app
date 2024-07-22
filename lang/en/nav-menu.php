@@ -14,6 +14,7 @@ return [
     */
 
     'dashboard' => 'Dashboard',
+    'internship_applicant' => 'Internship Applicant',
     'profile' => 'Profile',
     'logout' => 'Logout',
 ];

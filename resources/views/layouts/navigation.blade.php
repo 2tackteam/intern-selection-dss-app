@@ -16,6 +16,12 @@
                         {{ __('nav-menu.dashboard') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('internship-applicants.index')" :active="request()->routeIs('internship-applicants.index')">
+                        {{ __('nav-menu.internship_applicant') }}
+                    </x-nav-link>
+                </div>
             </div>
 
 

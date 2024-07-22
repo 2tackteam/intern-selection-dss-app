@@ -6,16 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Score extends Model
+class SubCriteria extends Model
 {
     use HasFactory;
 
-    protected $table = 'scores';
+    protected $table = 'sub_criterias';
 
     protected $guarded = ['id'];
 
-    public function applicant(): BelongsTo
-    {
-        return $this->belongsTo(Application::class);
+    public function criteria(): BelongsTo {
+        return $this->belongsTo(Criteria::class);
     }
 }

@@ -18,7 +18,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Applicant> $applicants
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Application> $applicants
  * @property-read int|null $applicants_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
@@ -69,6 +69,6 @@ class User extends Authenticatable
 
     public function applicants(): HasMany
     {
-        return $this->hasMany(Applicant::class);
+        return $this->hasMany(Application::class);
     }
 }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('criterias', function (Blueprint $table) {
             $table->id();
             $table->string('name')->comment('Nama Kriteria');
-            $table->float('weight')->comment('Bobot Kriteria');
+            $table->decimal('weight', 5, 2)->comment('Bobot Kriteria');
             $table->timestamps();
         });
     }
