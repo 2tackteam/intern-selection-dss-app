@@ -39,7 +39,7 @@
                                         <x-datatable.col :value="$applicant->full_name"/>
                                         <x-datatable.col :value="$applicant->birth_place"/>
                                         <x-datatable.col :value="$applicant->birth_date->translatedFormat('d F Y')"/>
-                                        <x-datatable.col :value="$applicant->gender"/>
+                                        <x-datatable.col :value="__('internship-applicant.gender.'. $applicant->gender)"/>
                                         <x-datatable.col :value="$applicant->education?->education_level"/>
                                         <x-datatable.col>
                                             <x-link-button :size="'sm'" href="{{ route('internship-applicants.show', hashIdsEncode($applicant->id)) }}">
