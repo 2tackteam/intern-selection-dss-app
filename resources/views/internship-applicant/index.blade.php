@@ -42,7 +42,7 @@
                                         <x-datatable.col :value="$applicant->gender"/>
                                         <x-datatable.col :value="$applicant->education?->education_level"/>
                                         <x-datatable.col>
-                                            <x-link-button href="{{ route('internship-applicants.show', hashIdsEncode($applicant->id)) }}">
+                                            <x-link-button :size="'sm'" href="{{ route('internship-applicants.show', hashIdsEncode($applicant->id)) }}">
                                                 <i class="far fa-eye mr-2"></i>
                                                 {{__('internship-applicant.buttons.detail')}}
                                             </x-link-button>
