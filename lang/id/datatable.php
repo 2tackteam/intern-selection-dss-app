@@ -17,5 +17,5 @@ return [
         'loading_records' => 'Memuat...',
         'empty_table' => 'Tidak ada data yang tersedia dalam tabel',
         'zero_records' => 'Tidak ada data yang cocok ditemukan',
-    ]
+    ],
 ];

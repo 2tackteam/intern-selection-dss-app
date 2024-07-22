@@ -17,5 +17,5 @@ return [
         'loading_records' => 'Loading...',
         'empty_table' => 'No data available in table',
         'zero_records' => 'No matching records found',
-    ]
+    ],
 ];

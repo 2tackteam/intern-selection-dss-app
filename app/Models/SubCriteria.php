@@ -14,7 +14,8 @@ class SubCriteria extends Model
 
     protected $guarded = ['id'];
 
-    public function criteria(): BelongsTo {
+    public function criteria(): BelongsTo
+    {
         return $this->belongsTo(Criteria::class);
     }
 }
