@@ -12,9 +12,9 @@
         @endif
     @endforeach
 
-    <div class="flex flex-wrap">
+    <div class="flex flex-wrap ">
         <div class="flex items-center w-full md:w-1/2 mt-3">
-            <label for="perPage" class="text-sm @if(!$lengthChange) hidden @endif">Show</label>
+            <label for="perPage" class="text-sm text-gray-800 dark:text-gray-200 @if(!$lengthChange) hidden @endif">Show</label>
             <div class="mx-1 @if(!$lengthChange) hidden @endif">
                 <select class="form-control-sm rounded-md text-sm py-1.5 pr-5" name="perPage" onchange="this.form.submit()">
                     @foreach([10, 25, 50, 100] as $perPage)
@@ -24,11 +24,11 @@
                     @endforeach
                 </select>
             </div>
-            <label for="filter" class="text-sm @if(!$lengthChange) hidden @endif">entries</label>
+            <label for="filter" class="text-sm text-gray-800 dark:text-gray-200 @if(!$lengthChange) hidden @endif">entries</label>
         </div>
 
         <div class="flex items-center w-full md:w-1/2 justify-end mt-3">
-            <label for="search" class="mx-2 text-sm @if(!$searching) hidden @endif">Search:</label>
+            <label for="search" class="mx-2 text-sm text-gray-800 dark:text-gray-200 @if(!$searching) hidden @endif">Search:</label>
             <div class="@if(!$searching) hidden @endif">
                 <input type="search" class="form-control-sm rounded-md text-sm p-2" placeholder=""
                        id="{{$datatableSearch}}">
@@ -54,7 +54,7 @@
 </table>
 
 @if($collection->count() > 0)
-    <div id="{{ $noRecordsMessage }}" class=" text-center text-black hidden">
+    <div id="{{ $noRecordsMessage }}" class="text-gray-800 dark:text-gray-200 text-center mb-5 hidden">
         No matching records found
     </div>
 @endif
