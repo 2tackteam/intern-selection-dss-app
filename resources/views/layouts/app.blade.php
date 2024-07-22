@@ -1,3 +1,6 @@
+@props(['navigation' => true])
+
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -15,10 +18,13 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         @stack('styles')
+        @stack('child-styles')
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
+            @if($navigation)
+                @include('layouts.navigation')
+            @endif
 
             <!-- Page Heading -->
             @isset($header)

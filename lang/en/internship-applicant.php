@@ -53,6 +53,11 @@ return [
         'print' => 'Print'
     ],
 
+    'gender' => [
+        'M' => 'Male',
+        'F' => 'Female',
+    ],
+
     'status' => [
         'pending' => 'Pending',
         'accepted' => 'Accepted',

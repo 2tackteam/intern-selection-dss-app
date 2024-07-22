@@ -23,4 +23,11 @@ class InternshipApplicantController extends Controller
 
         return view('internship-applicant.show', compact('data'));
     }
+
+    public function print(string $hashedId): View
+    {
+        $data['application'] = Application::query()->with('user', 'education')->find(hashIdsDecode($hashedId));
+
+        return view('internship-applicant.print', compact('data'));
+    }
 }

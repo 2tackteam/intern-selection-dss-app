@@ -29,7 +29,7 @@ return [
         'institution_name' => 'Nama Instansi',
         'major' => 'Jurusan',
         'academic_year' => 'Tahun Akademik',
-        'gpa' => 'GPA',
+        'gpa' => 'Nilai Rata-rata / GPA',
         'status' => 'Status'
     ],
 
@@ -48,6 +48,11 @@ return [
         'selection' => 'Seleksi Peserta',
         'detail' => 'Detail',
         'print' => 'Cetak'
+    ],
+
+    'gender' => [
+        'M' => 'Laki-laki',
+        'F' => 'Perempuan',
     ],
 
     'status' => [
