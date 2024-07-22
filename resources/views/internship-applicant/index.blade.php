@@ -5,7 +5,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('internship-applicant.page_title') }}
+            {{ __('internship-applicant.index.page_title') }}
         </h2>
     </x-slot>
 
@@ -42,7 +42,7 @@
                                         <x-datatable.col :value="$applicant->gender"/>
                                         <x-datatable.col :value="$applicant->education?->education_level"/>
                                         <x-datatable.col>
-                                            <x-link-button href="/">
+                                            <x-link-button href="{{ route('internship-applicants.show', hashIdsEncode($applicant->id)) }}">
                                                 <i class="far fa-eye mr-2"></i>
                                                 {{__('internship-applicant.buttons.detail')}}
                                             </x-link-button>

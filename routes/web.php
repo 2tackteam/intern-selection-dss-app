@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
         ->name('internship-applicants.')
         ->group(function () {
             Route::get('/', [InternshipApplicantController::class, 'index'])->name('index');
+            Route::get('/{application}', [InternshipApplicantController::class, 'show'])->name('show');
             //Route::get('create', [InternshipApplicantController::class, 'create'])->name('create');
             //Route::post('/', [InternshipApplicantController::class, 'store'])->name('store');
         });

@@ -12,7 +12,26 @@ return [
     | to customize your views to better match your application.
     |
     */
-    'page_title' => 'Pelamar Magang',
+    'index' => [
+        'page_title' => 'Pelamar Magang',
+    ],
+    'show' => [
+        'page_title' => 'Informasi Pelamar',
+
+        'title' => 'Informasi Pelamar',
+        'subtitle' => 'Detail pribadi dan lamaran magang.',
+
+        'full_name' => 'Nama Lengkap',
+        'email_address' => 'Alamat Email',
+        'place_date_of_birth' => 'Tempat / Tanggal Lahir',
+        'gender' => 'Jenis Kelamin',
+        'last_education' => 'Pendidikan Terakhir',
+        'institution_name' => 'Nama Instansi',
+        'major' => 'Jurusan',
+        'academic_year' => 'Tahun Akademik',
+        'gpa' => 'GPA',
+        'status' => 'Status'
+    ],
 
     'tables' => [
         'headers' => [
@@ -28,7 +47,14 @@ return [
     'buttons' => [
         'selection' => 'Seleksi Peserta',
         'detail' => 'Detail',
+        'print' => 'Cetak'
     ],
+
+    'status' => [
+        'pending' => 'Menunggu',
+        'accepted' => 'Diterima',
+        'rejected' => 'Ditolak'
+    ]
 
     //'modals' => [
     //    'delete_account' => [

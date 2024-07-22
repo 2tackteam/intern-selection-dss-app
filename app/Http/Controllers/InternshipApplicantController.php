@@ -12,15 +12,15 @@ class InternshipApplicantController extends Controller
     {
         $perPage = $request->query('perPage', 10);
 
-        $data = [
-            'applicants' => Application::query()->with('user', 'education')->paginate($perPage),
-        ];
+        $data['applicants'] = Application::query()->with('user', 'education')->paginate($perPage);
 
         return view('internship-applicant.index', compact('data'));
     }
 
-    public function create(): View
+    public function show(string $hashedId): View
     {
-        return view('internship-applicant.create');
+        $data['application'] = Application::query()->with('user', 'education')->find(hashIdsDecode($hashedId));
+
+        return view('internship-applicant.show', compact('data'));
     }
 }

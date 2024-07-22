@@ -13,7 +13,28 @@ return [
     |
     */
 
-    'page_title' => 'Internship Applications',
+    'index' => [
+        'page_title' => 'Internship Applicants',
+    ],
+    'show' => [
+        'page_title' => 'Applicant Information',
+
+        'title' => 'Applicant Information',
+        'subtitle' => 'Personal details and application.',
+
+        'full_name' => 'Full Name',
+        'email_address' => 'Email Address',
+        'place_date_of_birth' => 'Place / Date Of Birth',
+        'place_of_birth' => 'Place Of Birth',
+        'gender' => 'Gender',
+        'last_education' => 'Last Education',
+        'institution_name' => 'Institution Name',
+        'major' => 'Major',
+        'academic_year' => 'Academic Year',
+        'gpa' => 'GPA',
+        'status' => 'Status'
+    ],
+
 
     'tables' => [
         'headers' => [
@@ -29,7 +50,15 @@ return [
     'buttons' => [
         'selection' => 'Participant Selection',
         'detail' => 'Details',
+        'print' => 'Print'
     ],
+
+    'status' => [
+        'pending' => 'Pending',
+        'accepted' => 'Accepted',
+        'rejected' => 'Rejected'
+    ]
+
     //
     //'modals' => [
     //    'delete_account' => [
