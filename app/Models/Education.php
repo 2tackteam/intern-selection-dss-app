@@ -33,6 +33,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Education whereStartYear($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Education whereUpdatedAt($value)
  *
+ * @property int $application_id
+ *
+ * @method static \Database\Factories\EducationFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Education whereApplicationId($value)
+ *
  * @mixin \Eloquent
  */
 class Education extends Model
