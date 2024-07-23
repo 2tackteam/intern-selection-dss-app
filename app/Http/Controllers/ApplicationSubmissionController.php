@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreApplicationSubmissionRequest;
+use App\Http\Requests\ApplicationSubmissions\StoreApplicationSubmissionRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class ApplicationSubmissionController extends Controller implements HasMiddleware
@@ -44,7 +45,32 @@ class ApplicationSubmissionController extends Controller implements HasMiddlewar
 
     public function store(StoreApplicationSubmissionRequest $request): RedirectResponse
     {
-        return redirect()->route('application-submissions.index');
+        $data = $request->validated();
+
+        try {
+            DB::transaction(function () use ($data) {
+                $application = Auth::user()->applicants()->create([
+                    'full_name' => $data['full_name'],
+                    'birth_place' => $data['birth_place'],
+                    'birth_date' => $data['birth_date'],
+                    'gender' => $data['gender'],
+                ]);
+
+                $application->education()->create([
+                    'education_level' => $data['education_level'],
+                    'institution_name' => $data['institution_name'],
+                    'major' => $data['major'],
+                    'start_year' => $data['start_year'],
+                    'end_year' => $data['end_year'],
+                    'gpa' => $data['gpa'],
+                ]);
+            });
+
+
+            return redirect()->route('application-submissions.index')->with('success', 'Data berhasil ditambahkan');
+        } catch (\Throwable $throwable) {
+            return redirect()->back()->withInput($request->all());
+        }
     }
 
     public function show(string $hashedId): View
