@@ -33,7 +33,6 @@ Route::middleware('auth')->group(function () {
             Route::get('/applicant/selection', [InternshipApplicantController::class, 'applicantSelection'])->name('applicant-selection');
         });
 
-
     /**
      * Application Submissions Controller
      */

@@ -38,7 +38,6 @@ return [
         'page_title' => 'Selection of Internship Applicants',
     ],
 
-
     'tables' => [
         'headers' => [
             'full_name' => 'Full Name',

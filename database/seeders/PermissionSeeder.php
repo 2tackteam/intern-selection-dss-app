@@ -54,7 +54,6 @@ class PermissionSeeder extends Seeder
             'delete account',
         ]);
 
-
         Role::create(['name' => 'user'])->syncPermissions([
             'view-menu dashboard',
             'view-menu application-submissions',

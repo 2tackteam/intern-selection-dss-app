@@ -45,7 +45,6 @@ return [
             'last_education' => 'Pendidikan Terakhir',
             'actions' => 'Aksi',
 
-
             'ranking' => 'Ranking',
             'name' => 'Nama Pelamar',
             'email' => 'Alamat Email',

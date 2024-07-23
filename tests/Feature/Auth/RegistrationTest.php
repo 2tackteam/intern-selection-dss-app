@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+
 use function Pest\Laravel\assertAuthenticated;
 use function Pest\Laravel\assertAuthenticatedAs;
 use function Pest\Laravel\get;
@@ -10,7 +11,6 @@ use function Pest\Laravel\seed;
 beforeEach(function () {
     seed();
 });
-
 
 test('registration screen can be rendered', function () {
     $response = get('/register');

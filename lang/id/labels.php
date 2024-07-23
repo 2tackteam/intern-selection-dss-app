@@ -30,5 +30,5 @@ return [
     'education_year' => 'Tahun Ajaran/Pendidikan',
     'start_year' => 'Tahun Mulai',
     'end_year' => 'Tahun Selesai',
-    'gpa' => 'IPK / Nilai rata-rata'
+    'gpa' => 'IPK / Nilai rata-rata',
 ];

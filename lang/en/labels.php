@@ -30,5 +30,5 @@ return [
     'education_year' => 'Education Year',
     'start_year' => 'Start Year',
     'end_year' => 'End Year',
-    'gpa' => 'GPA'
+    'gpa' => 'GPA',
 ];

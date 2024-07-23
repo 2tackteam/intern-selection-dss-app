@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
-use App\Models\Education;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 

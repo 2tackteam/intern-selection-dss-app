@@ -41,7 +41,6 @@ return [
         'subtitle' => 'Be sure to fill in all information completely and accurately on your application data form.',
     ],
 
-
     'tables' => [
         'headers' => [
             'full_name' => 'Full Name',

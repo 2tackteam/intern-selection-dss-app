@@ -40,7 +40,6 @@ return [
         'subtitle' => 'Pastikan untuk mengisi semua informasi dengan lengkap dan akurat pada formulir data lamaran Anda.',
     ],
 
-
     'tables' => [
         'headers' => [
             'full_name' => 'Nama Lengkap',
