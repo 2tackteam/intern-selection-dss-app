@@ -14,7 +14,7 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+        <link href="{{ asset('css/flatpickr.min.css') }}" rel="stylesheet" />
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -44,8 +44,19 @@
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="{{ asset('js/jquery-3.6.0.js') }}"></script>
+        <script src="{{ asset('js/flatpickr.min.js') }}"></script>
+        <script src="{{ asset('js/flatpickr_dist_l10n_id.js') }}"></script>
+
+        <script>
+            $('input[type="date"]').flatpickr({
+                altInput: true,
+                altFormat: "F j, Y",
+                dateFormat: "Y-m-d",
+                locale: `{{ config('app.locale') }}`
+            })
+        </script>
+
         @stack('scripts')
         @stack('child-scripts')
     </body>
