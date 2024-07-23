@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Actions\AHP\AnalyticalHierarchyProcessAction;
 use App\Models\Application;
-use App\Models\Score;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -31,6 +30,8 @@ class InternshipApplicantController extends Controller implements HasMiddleware
 
         $data['applicants'] = Application::query()->with('user', 'education')->latest()->paginate($perPage);
 
+        $request->session()->forget('results');
+
         return view('pages.internship-applicant.index', compact('data'));
     }
 
@@ -56,11 +57,15 @@ class InternshipApplicantController extends Controller implements HasMiddleware
             ->latest('id')
             ->paginate($perPage);
 
+        $request->session()->forget('results');
+
         return view('pages.internship-applicant.selection', compact('data'));
     }
 
     public function processSelection(Request $request, AnalyticalHierarchyProcessAction $action): RedirectResponse
     {
+        $request->session()->forget('results');
+
         $filters = null;
 
         $applicationDateRange = $request->input('application_date_range');
@@ -105,11 +110,26 @@ class InternshipApplicantController extends Controller implements HasMiddleware
         return redirect()->back();
     }
 
-    public function applicantSelectionResult(Request $request): View
+    public function applicantSelectionResult(Request $request): View|RedirectResponse
     {
         $perPage = $request->query('perPage', 10);
+        $applicationIds = [];
 
-        $applicationIds = Score::query()->with('application')->orderBy('final_score', 'desc')->pluck('application_id');
+        if ($request->session()->has('results')) {
+            $results = $request->session()->get('results');
+            $evaluationResults = collect($results['evaluation_results']);
+            $data['evaluation_results'] = $evaluationResults;
+
+            $applicationIds = $evaluationResults->map(fn($item) => hashIdsDecode($item['application_id']))->values();
+        } else {
+
+            notify()->error(
+                __('internship-applicant.notify.messages.process_selection.error'),
+                __('internship-applicant.notify.title.error')
+            );
+
+            return redirect()->back();
+        }
 
         $data['applicants'] = Application::query()->with('user', 'education')
             ->whereIn('id', $applicationIds)
