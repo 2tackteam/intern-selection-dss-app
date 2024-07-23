@@ -16,7 +16,7 @@ class ApplicationSubmissionController extends Controller
 
         $data['applications'] = Auth::user()->applicants()->paginate($perPage);
 
-        return view('application-submission.index', compact('data'));
+        return view('pages.application-submission.index', compact('data'));
     }
 
     public function create(Request $request): View
@@ -25,7 +25,7 @@ class ApplicationSubmissionController extends Controller
 
         $data['applications'] = Auth::user()->applicants()->paginate($perPage);
 
-        return view('application-submission.create', compact('data'));
+        return view('pages.application-submission.create', compact('data'));
     }
 
     public function store(StoreApplicationSubmissionRequest $request): RedirectResponse
@@ -37,13 +37,13 @@ class ApplicationSubmissionController extends Controller
     {
         $data['application'] = Auth::user()->applicants()->where('id', hashIdsDecode($hashedId))->firstOrFail();
 
-        return view('application-submission.show', compact('data'));
+        return view('pages.application-submission.show', compact('data'));
     }
 
     public function print(string $hashedId): View
     {
         $data['application'] = Auth::user()->applicants()->where('id', hashIdsDecode($hashedId))->firstOrFail();
 
-        return view('application-submission.print', compact('data'));
+        return view('pages.application-submission.print', compact('data'));
     }
 }

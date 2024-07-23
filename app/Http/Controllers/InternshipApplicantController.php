@@ -14,21 +14,21 @@ class InternshipApplicantController extends Controller
 
         $data['applicants'] = Application::query()->with('user', 'education')->latest()->paginate($perPage);
 
-        return view('internship-applicant.index', compact('data'));
+        return view('pages.internship-applicant.index', compact('data'));
     }
 
     public function show(string $hashedId): View
     {
         $data['application'] = Application::query()->with('user', 'education')->find(hashIdsDecode($hashedId));
 
-        return view('internship-applicant.show', compact('data'));
+        return view('pages.internship-applicant.show', compact('data'));
     }
 
     public function print(string $hashedId): View
     {
         $data['application'] = Application::query()->with('user', 'education')->find(hashIdsDecode($hashedId));
 
-        return view('internship-applicant.print', compact('data'));
+        return view('pages.internship-applicant.print', compact('data'));
     }
 
     public function applicantSelection(Request $request): View
@@ -39,6 +39,6 @@ class InternshipApplicantController extends Controller
             ->latest('id')
             ->paginate($perPage);
 
-        return view('internship-applicant.selection', compact('data'));
+        return view('pages.internship-applicant.selection', compact('data'));
     }
 }
