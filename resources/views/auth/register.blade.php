@@ -1,4 +1,10 @@
 <x-guest-layout>
+
+    <p class="text-center text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-10">
+        Sistem Pendukung Keputusan Seleksi Peserta Magang
+    </p>
+
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
