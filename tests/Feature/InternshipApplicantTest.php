@@ -32,7 +32,7 @@ describe('internship applicants page', function () {
     })->with(['admin']);
 });
 
-describe('detail internship applicants page', function () {
+describe('internship applicants detail page', function () {
     test('page is forbidden', function (string $role) {
         $user = User::factory()->create()->assignRole($role);
 
@@ -52,7 +52,7 @@ describe('detail internship applicants page', function () {
     })->with(['admin']);
 });
 
-describe('print internship applicants page', function () {
+describe('internship applicants print page', function () {
     test('page is forbidden', function (string $role) {
         $user = User::factory()->create()->assignRole($role);
 
@@ -72,7 +72,7 @@ describe('print internship applicants page', function () {
     })->with(['admin']);
 });
 
-describe('selection internship applicants page', function () {
+describe('internship applicants selection page', function () {
 
     test('page is forbidden', function (string $role) {
         $user = User::factory()->create()->assignRole($role);
