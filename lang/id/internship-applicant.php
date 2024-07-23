@@ -34,6 +34,16 @@ return [
     ],
     'selection' => [
         'page_title' => 'Seleksi Pelamar Magang',
+
+        'title' => 'Seleksi Pelamar Magang',
+        'subtitle' => 'Untuk menyeleksi pelamar yang paling cocok dengan kebutuhan perusahaan.',
+    ],
+
+    'selection_result' => [
+        'page_title' => 'Hasil Seleksi Pelamar Magang',
+
+        'title' => 'Hasil Seleksi Pelamar Magang',
+        'subtitle' => 'Berikut ini adalah daftar pelamar magang yang telah diurutkan berdasarkan nilai seleksi.',
     ],
 
     'tables' => [
@@ -63,6 +73,7 @@ return [
     ],
 
     'gender' => [
+        'ALL' => 'Semua',
         'M' => 'Laki-laki',
         'F' => 'Perempuan',
     ],
@@ -73,17 +84,17 @@ return [
         'rejected' => 'Ditolak',
     ],
 
-    //'modals' => [
-    //    'delete_account' => [
-    //        'title' => 'Are you sure you want to delete your account?',
-    //        'subtitle' => 'Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.',
-    //    ],
-    //],
-    //
-    //'messages' => [
-    //    'unverified' => 'Your email address is unverified.',
-    //    'verification_link_sent' => 'A new verification link has been sent to your email address.',
-    //    'saved' => 'Your account has been saved.',
-    //],
+    'notify' => [
+        'title' => [
+            'success' => 'Berhasil',
+            'error' => 'Oops, terjadi kesalahan',
+        ],
+        'messages' => [
+            'process_selection' => [
+                'success' => 'Berhasil melakukan seleksi pelamar.',
+                'error' => 'Gagal melakukan seleksi pelamar.',
+            ],
+        ],
+    ],
 
 ];

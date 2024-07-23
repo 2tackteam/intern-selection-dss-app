@@ -19,36 +19,77 @@
                         {{__('buttons.back')}}
                     </x-link-button>
 
+                    <section class="mt-3">
+                        <header>
+                            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                {{ __('internship-applicant.selection.title') }}
+                            </h2>
 
-                    <x-datatable :id="'dtApplicants'" :collection="$data['applicants']">
-                        <x-slot:thead>
-                            <x-datatable.row isHeader>
-                                <x-datatable.col :value="__('internship-applicant.tables.headers.ranking')"/>
-                                <x-datatable.col :value="__('internship-applicant.tables.headers.name')"/>
-                                <x-datatable.col :value="__('internship-applicant.tables.headers.email')"/>
-                                <x-datatable.col :value="__('internship-applicant.tables.headers.major')"/>
-                                <x-datatable.col :value="__('internship-applicant.tables.headers.education')"/>
-                                <x-datatable.col :value="__('internship-applicant.tables.headers.gpa')"/>
-                                <x-datatable.col :value="__('internship-applicant.tables.headers.score')"/>
-                            </x-datatable.row>
-                        </x-slot:thead>
-                        <x-slot:tbody>
-                            @forelse($data['applicants'] as $applicant)
-                                @if($applicant instanceof \App\Models\Application)
-                                    <x-datatable.row>
-                                        <x-datatable.col :value="$loop->iteration"/>
-                                        <x-datatable.col :value="$applicant->full_name"/>
-                                        <x-datatable.col :value="$applicant->user->email"/>
-                                        <x-datatable.col :value="$applicant->education->major"/>
-                                        <x-datatable.col :value="$applicant->education->education_level"/>
-                                        <x-datatable.col :value="$applicant->education->gpa"/>
-                                        <x-datatable.col :value="'-'"/>
-                                    </x-datatable.row>
-                                @endif
-                            @empty
-                            @endforelse
-                        </x-slot:tbody>
-                    </x-datatable>
+                            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                {{ __('internship-applicant.selection.subtitle') }}
+                            </p>
+                        </header>
+
+
+                        <div class="sm:max-w-full md:max-w-xl">
+                            <form method="post" action="{{ route('internship-applicants.process-selection') }}"
+                                  class="mt-6 space-y-6">
+                                @csrf
+
+                                <div>
+                                    <x-input-label for="application_date_range" :value="__('labels.application_date_range')"/>
+                                    <x-date-input id="application_date_range" name="application_date_range" type="date" class="mt-1 block w-full"
+                                                  :value="old('application_date_range')" placeholder="Pilih Tanggal..." autofocus/>
+                                    <x-input-error class="mt-2" :messages="$errors->get('application_date_range')"/>
+                                </div>
+
+
+                                <div class="w-full">
+                                    <x-input-label for="gender" :value="__('labels.gender')"/>
+                                    <x-select-option name="gender">
+                                        <option
+                                            value="all" @selected(old('gender') == 'all')>{{ __('internship-applicant.gender.ALL') }}</option>
+                                        @foreach(\App\Enums\GenderEnum::toArray() as $value)
+                                            <option
+                                                value="{{ $value }}" @selected(old('gender') == $value)>{{ __('internship-applicant.gender.'.$value) }}</option>
+                                        @endforeach
+                                    </x-select-option>
+                                    <x-input-error class="mt-2" :messages="$errors->get('gender')"/>
+                                </div>
+
+                                <div class="flex items-center gap-4">
+                                    <x-primary-button>
+                                        <i class="fas fa-users-between-lines mr-3"></i>
+                                        {{ __('internship-applicant.buttons.selection') }}
+                                    </x-primary-button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    @pushonce('child-scripts')
+                        <script>
+                            $('.flatpickr').flatpickr({
+                                mode: 'range',
+                                wrap: true,
+                                altInput: true,
+                                altFormat: "d F Y",
+                                dateFormat: "Y-m-d",
+                                locale: `{{ config('app.locale') }}`,
+                                maxDate: 'today'
+                            })
+
+                            $('#application_date_range').flatpickr({
+                                mode: 'range',
+                                wrap: true,
+                                altInput: true,
+                                altFormat: "d F Y",
+                                dateFormat: "Y-m-d",
+                                locale: `{{ config('app.locale') }}`,
+                                maxDate: 'today'
+                            })
+                        </script>
+                    @endpushonce
 
                 </div>
             </div>

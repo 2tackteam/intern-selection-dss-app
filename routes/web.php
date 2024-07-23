@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/{application}', [InternshipApplicantController::class, 'show'])->name('show');
             Route::get('/{application}/print', [InternshipApplicantController::class, 'print'])->name('print');
             Route::get('/applicant/selection', [InternshipApplicantController::class, 'applicantSelection'])->name('applicant-selection');
+            Route::post('/applicant/process', [InternshipApplicantController::class, 'processSelection'])->name('process-selection');
+            Route::get('/applicant/selection/result', [InternshipApplicantController::class, 'applicantSelectionResult'])->name('applicant-selection-result');
         });
 
     /**

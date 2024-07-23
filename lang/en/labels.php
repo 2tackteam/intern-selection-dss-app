@@ -32,4 +32,6 @@ return [
     'end_year' => 'End Year',
     'gpa' => 'GPA',
     'gpa_equal' => 'Equivalent to GPA Value',
+
+    'application_date_range' => 'Application Date Range',
 ];

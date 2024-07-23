@@ -32,4 +32,6 @@ return [
     'end_year' => 'Tahun Selesai',
     'gpa' => 'IPK / Nilai rata-rata',
     'gpa_equal' => 'Setara dengan Nilai Rata-rata',
+
+    'application_date_range' => 'Rentang Tanggal Pendaftaran',
 ];

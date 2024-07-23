@@ -36,6 +36,9 @@ return [
     ],
     'selection' => [
         'page_title' => 'Selection of Internship Applicants',
+
+        'title' => 'Selection of Internship Applicants',
+        'subtitle' => "Select applicants who are best suited to the company's needs.",
     ],
 
     'tables' => [
@@ -65,6 +68,7 @@ return [
     ],
 
     'gender' => [
+        'ALL' => 'All Gender',
         'M' => 'Male',
         'F' => 'Female',
     ],
@@ -75,18 +79,17 @@ return [
         'rejected' => 'Rejected',
     ],
 
-    //
-    //'modals' => [
-    //    'delete_account' => [
-    //        'title' => 'Are you sure you want to delete your account?',
-    //        'subtitle' => 'Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.',
-    //    ],
-    //],
-    //
-    //'messages' => [
-    //    'unverified' => 'Your email address is unverified.',
-    //    'verification_link_sent' => 'A new verification link has been sent to your email address.',
-    //    'saved' => 'Your account has been saved.',
-    //],
+    'notify' => [
+        'title' => [
+            'success' => 'Success',
+            'error' => 'Oops! Something went wrong.',
+        ],
+        'messages' => [
+            'process_selection' => [
+                'success' => 'Successful selection of applicants.',
+                'error' => 'Failed applicant selection.',
+            ],
+        ],
+    ],
 
 ];

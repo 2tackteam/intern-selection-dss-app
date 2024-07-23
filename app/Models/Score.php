@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property float $final_score Skor AKhir
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Application|null $applicant
+ * @property-read \App\Models\Application|null $application
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Score newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Score newQuery()
@@ -33,7 +33,7 @@ class Score extends Model
 
     protected $guarded = ['id'];
 
-    public function applicant(): BelongsTo
+    public function application(): BelongsTo
     {
         return $this->belongsTo(Application::class);
     }
