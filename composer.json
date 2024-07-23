@@ -9,6 +9,7 @@
         "hashids/hashids": "^5.0",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
+        "mckenziearts/laravel-notify": "^2.5",
         "spatie/laravel-permission": "^6.9"
     },
     "require-dev": {

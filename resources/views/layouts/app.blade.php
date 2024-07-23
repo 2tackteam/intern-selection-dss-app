@@ -16,11 +16,14 @@
 
         <link href="{{ asset('css/flatpickr.min.css') }}" rel="stylesheet" />
 
+        @notifyCss
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         @stack('styles')
         @stack('child-styles')
+
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -56,6 +59,9 @@
                 locale: `{{ config('app.locale') }}`
             })
         </script>
+
+        <x-notify::notify />
+        @notifyJs
 
         @stack('scripts')
         @stack('child-scripts')
