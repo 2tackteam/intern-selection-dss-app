@@ -4,10 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Application;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\View\View;
 
-class InternshipApplicantController extends Controller
+class InternshipApplicantController extends Controller implements HasMiddleware
 {
+    /**
+     * Get the middleware that should be assigned to the controller.
+     */
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('can:view internship-applicants', only: ['index', 'show', 'print']),
+            new Middleware('can:selection internship-applicants', only: ['applicantSelection', 'processSelection']),
+            new Middleware('can:print internship-applicants', only: ['print']),
+        ];
+    }
+
     public function index(Request $request): View
     {
         $perPage = $request->query('perPage', 10);
