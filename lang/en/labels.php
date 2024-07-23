@@ -31,4 +31,5 @@ return [
     'start_year' => 'Start Year',
     'end_year' => 'End Year',
     'gpa' => 'GPA',
+    'gpa_equal' => 'Equivalent to GPA Value',
 ];

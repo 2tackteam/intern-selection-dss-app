@@ -31,4 +31,5 @@ return [
     'start_year' => 'Tahun Mulai',
     'end_year' => 'Tahun Selesai',
     'gpa' => 'IPK / Nilai rata-rata',
+    'gpa_equal' => 'Setara dengan Nilai Rata-rata',
 ];

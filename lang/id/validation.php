@@ -39,11 +39,11 @@ return [
     'date' => ':Attribute harus berupa tanggal yang valid.',
     'date_equals' => ':Attribute harus berupa tanggal yang sama dengan :date',
     'date_format' => ':Attribute harus sesuai dengan format :format.',
-    'decimal' => ':Attribute harus berupa desimal :desimal.',
+    'decimal' => ':Attribute harus berupa desimal :decimal.',
     'declined' => ':Attribute harus ditolak.',
     'declined_if' => ':Attribute ditolak ketika :other adalah :value.',
     'different' => ':Attribute dan :other harus berbeda.',
-    'digits' => ':Attribute harus berupa angka :digit.',
+    'digits' => ':Attribute harus berupa angka :digits.',
     'digits_between' => ':Attribute harus berada di antara :min dan :max digit.',
     'dimensions' => ':Attribute memiliki dimensi gambar yang tidak valid.',
     'distinct' => ':Attribute memiliki nilai duplikat.',
@@ -189,6 +189,19 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'application_submission' => [
+            'full_name' => 'Nama lengkap',
+            'birth_place' => 'Tempat lahir',
+            'birth_date' => 'Tanggal lahir',
+            'gender' => 'Jenis kelamin',
+            'education_level' => 'Tingkat Pendidikan',
+            'institution_name' => 'Nama Instansi',
+            'major' => 'Jurusan',
+            'start_year' => 'Tahun mulai',
+            'end_year' => 'Tahun berakhir',
+            'gpa' => 'IPK / Nilai rata-rata',
+        ],
+    ],
 
 ];

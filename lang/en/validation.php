@@ -189,6 +189,19 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'application_submission' => [
+            'full_name' => 'Full Name',
+            'birth_place' => 'Birth Place',
+            'birth_date' => 'Birth Date',
+            'gender' => 'Gender',
+            'education_level' => 'Education Level',
+            'institution_name' => 'Institution Name',
+            'major' => 'Major',
+            'start_year' => 'Start Year',
+            'end_year' => 'End Year',
+            'gpa' => 'GPA',
+        ],
+    ],
 
 ];
