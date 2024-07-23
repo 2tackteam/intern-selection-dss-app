@@ -34,7 +34,7 @@ describe('application submissions page', function () {
     })->with(['user']);
 });
 
-describe('detail application submissions page', function () {
+describe('application submissions detail page', function () {
     test('page is forbidden', function (string $role) {
         $user = User::query()->with('applications')->whereRelation('roles', 'name', $role)->inRandomOrder()->firstOrFail();
 
@@ -56,7 +56,7 @@ describe('detail application submissions page', function () {
     })->with(['user']);
 });
 
-describe('print application submissions page', function () {
+describe('application submissions print page', function () {
     test('page is forbidden', function (string $role) {
         $user = User::query()->with('applications')->whereRelation('roles', 'name', $role)->inRandomOrder()->firstOrFail();
 
@@ -78,7 +78,7 @@ describe('print application submissions page', function () {
     })->with(['user']);
 });
 
-describe('create application submissions page', function () {
+describe('application submissions create page', function () {
     test('page is forbidden', function (string $role) {
         $user = User::query()->whereRelation('roles', 'name', $role)->inRandomOrder()->firstOrFail();
 
