@@ -16,7 +16,7 @@
         <div class="flex items-center w-full md:w-1/2 mt-3">
             <label for="perPage" class="text-sm text-gray-800 dark:text-gray-200 @if(!$lengthChange) hidden @endif">Show</label>
             <div class="mx-1 @if(!$lengthChange) hidden @endif">
-                <select class="form-control-sm rounded-md text-sm py-1.5 pr-5" name="perPage" onchange="this.form.submit()">
+                <select class="form-control-sm rounded-md text-sm py-1.5 pr-5 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300" name="perPage" onchange="this.form.submit()">
                     @foreach([10, 25, 50, 100] as $perPage)
                         <option value="{{ $perPage }}" @selected($perPage == request()->query('perPage'))>
                             {{ $perPage }}
@@ -30,7 +30,7 @@
         <div class="flex items-center w-full md:w-1/2 justify-end mt-3">
             <label for="search" class="mx-2 text-sm text-gray-800 dark:text-gray-200 @if(!$searching) hidden @endif">Search:</label>
             <div class="@if(!$searching) hidden @endif">
-                <input type="search" class="form-control-sm rounded-md text-sm p-2" placeholder=""
+                <input type="search" class="form-control-sm rounded-md text-sm p-2 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300" placeholder=""
                        id="{{$datatableSearch}}">
             </div>
         </div>
