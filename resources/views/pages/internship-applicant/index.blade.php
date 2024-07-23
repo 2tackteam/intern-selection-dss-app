@@ -28,6 +28,7 @@
                                 <x-datatable.col :value="__('internship-applicant.tables.headers.place_of_birth')"/>
                                 <x-datatable.col :value="__('internship-applicant.tables.headers.gender')"/>
                                 <x-datatable.col :value="__('internship-applicant.tables.headers.last_education')"/>
+                                <x-datatable.col :value="__('internship-applicant.tables.headers.status')"/>
                                 <x-datatable.col :value="__('internship-applicant.tables.headers.actions')"/>
                             </x-datatable.row>
                         </x-slot:thead>
@@ -41,6 +42,21 @@
                                         <x-datatable.col :value="$applicant->birth_date->translatedFormat('d F Y')"/>
                                         <x-datatable.col :value="__('internship-applicant.gender.'. $applicant->gender)"/>
                                         <x-datatable.col :value="$applicant->education?->education_level"/>
+                                        <x-datatable.col>
+                                            @if($applicant->status === 'pending')
+                                                <div class="inline-flex items-center px-4 py-2 bg-gray-400 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 tracking-widest">
+                                                    {{ __('application-submission.status.'. $applicant->status) }}
+                                                </div>
+                                            @elseif($applicant->status === 'accepted')
+                                                <div class="inline-flex items-center px-4 py-2 bg-blue-500 dark:bg-blue-400 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-900 tracking-widest">
+                                                    {{ __('application-submission.status.'. $applicant->status) }}
+                                                </div>
+                                            @else
+                                                <div class="inline-flex items-center px-4 py-2 bg-red-600 dark:bg-red-400 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 tracking-widest">
+                                                    {{ __('application-submission.status.'. $applicant->status) }}
+                                                </div>
+                                            @endif
+                                        </x-datatable.col>
                                         <x-datatable.col>
                                             <x-link-button :size="'sm'" href="{{ route('internship-applicants.show', hashIdsEncode($applicant->id)) }}">
                                                 <i class="far fa-eye mr-2"></i>

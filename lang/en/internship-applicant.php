@@ -45,6 +45,7 @@ return [
             'place_of_birth' => 'Place Of Birth',
             'gender' => 'Gender',
             'last_education' => 'Last Education',
+            'status' => 'Status',
             'actions' => 'Actions',
 
             'ranking' => 'Ranking',

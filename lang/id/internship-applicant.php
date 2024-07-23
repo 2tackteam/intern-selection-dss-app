@@ -43,6 +43,7 @@ return [
             'place_of_birth' => 'Tempat Lahir',
             'gender' => 'Jenis Kelamin',
             'last_education' => 'Pendidikan Terakhir',
+            'status' => 'Status',
             'actions' => 'Aksi',
 
             'ranking' => 'Ranking',
