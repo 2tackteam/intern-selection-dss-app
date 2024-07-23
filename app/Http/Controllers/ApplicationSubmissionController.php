@@ -77,7 +77,7 @@ class ApplicationSubmissionController extends Controller implements HasMiddlewar
             notify()->error(
                 __('application-submission.notify.messages.store.error'),
                 __('application-submission.notify.title.error')
-            ) ;
+            );
 
             return redirect()->back()->withInput($request->all());
         }

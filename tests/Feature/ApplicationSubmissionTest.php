@@ -2,7 +2,6 @@
 
 use App\Enums\EducationLevelEnum;
 use App\Enums\GenderEnum;
-use App\Models\Application;
 use App\Models\User;
 
 use function Pest\Laravel\actingAs;
@@ -99,12 +98,12 @@ describe('application submissions create page', function () {
 });
 
 describe('store application submissions', function () {
-    beforeEach(function (){
+    beforeEach(function () {
 
         $educationLevel = fake()->randomElement(EducationLevelEnum::toArray());
-        if ($educationLevel === EducationLevelEnum::SHS_VHS->value){
+        if ($educationLevel === EducationLevelEnum::SHS_VHS->value) {
             $gpa = rand(1, 100);
-        } else{
+        } else {
             $gpa = rand(1.00, 4.00);
         }
         $year = now()->year;
@@ -124,7 +123,6 @@ describe('store application submissions', function () {
             'gpa' => $gpa,
         ];
     });
-
 
     test('store is forbidden', function (string $role) {
         $user = User::query()->whereRelation('roles', 'name', $role)->inRandomOrder()->firstOrFail();
@@ -152,10 +150,9 @@ describe('store application submissions', function () {
             ->post(route('application-submissions.store'));
 
         $response->assertInvalid([
-            'full_name','birth_place','birth_date', 'gender',
-            'education_level','institution_name','major',
-            'start_year','end_year','gpa',
+            'full_name', 'birth_place', 'birth_date', 'gender',
+            'education_level', 'institution_name', 'major',
+            'start_year', 'end_year', 'gpa',
         ]);
     })->with(['user']);
 });
-

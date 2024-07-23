@@ -10,6 +10,7 @@ class StoreApplicationSubmissionRequest extends FormRequest
     public function rules(): array
     {
         $maxGPA = $this->input('education_level') === EducationLevelEnum::SHS_VHS->value ? '100' : '4.0';
+
         return [
             'full_name' => ['required', 'string', 'max:255'],
             'birth_place' => ['required', 'string', 'max:255'],

@@ -77,6 +77,6 @@ return [
                 'success' => 'Application Data successfully added.',
                 'error' => 'Application Data failed to be added.',
             ],
-        ]
+        ],
     ],
 ];

@@ -75,7 +75,7 @@ return [
             'store' => [
                 'success' => 'Anda telah menambahkan data pengajuan magang.',
                 'error' => 'Tidak dapat menambahkan data pengajuan magang.',
-            ]
-        ]
+            ],
+        ],
     ],
 ];
