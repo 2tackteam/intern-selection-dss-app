@@ -17,12 +17,14 @@ class ApplicationFactory extends Factory
      */
     public function definition(): array
     {
+        $gender = $this->faker->randomElement(['M', 'F']);
+
         return [
             'user_id' => User::factory()->create()->assignRole('user'),
-            'full_name' => $this->faker->name(),
+            'full_name' => $this->faker->name(gender: $gender === 'M' ? 'male' : 'female'),
             'birth_date' => $this->faker->date(),
             'birth_place' => $this->faker->city(),
-            'gender' => $this->faker->randomElement(['M', 'F']),
+            'gender' => $gender,
         ];
     }
 }

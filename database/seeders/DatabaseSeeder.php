@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             UserSeeder::class,
             ApplicationSeeder::class,
+            CriteriaSeeder::class,
         ]);
     }
 }

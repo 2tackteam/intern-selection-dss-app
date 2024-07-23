@@ -66,7 +66,7 @@ class InternshipApplicantController extends Controller implements HasMiddleware
         $applicationDateRange = $request->input('application_date_range');
         $gender = $request->input('gender', 'all');
 
-        if ($applicationDateRange){
+        if ($applicationDateRange) {
             $explode = explode(' - ', $applicationDateRange);
             $startDate = $explode[0];
             $endDate = $explode[1];
@@ -74,7 +74,7 @@ class InternshipApplicantController extends Controller implements HasMiddleware
             $filters['start_date'] = $startDate;
             $filters['end_date'] = $endDate;
         }
-        if ($gender !== 'all'){
+        if ($gender !== 'all') {
             $filters['gender'] = $gender;
         }
 
@@ -83,25 +83,26 @@ class InternshipApplicantController extends Controller implements HasMiddleware
             __('internship-applicant.notify.title.success')
         );
 
-        return redirect()->route('internship-applicants.applicant-selection-result', $filters);
+        // Calculate AHP
+        $results = $action->calculateAHP($filters);
 
-        //// Calculate AHP
-        //$isSuccess = $action->calculateAHP($filters);
-        //if ($isSuccess){
-        //    notify()->success(
-        //        __('internship-applicant.notify.messages.process_selection.success'),
-        //        __('internship-applicant.notify.title.success')
-        //    );
-        //
-        //    return redirect()->route('internship-applicants.applicant-selection-result', $filters);
-        //}
-        //
-        //notify()->error(
-        //    __('internship-applicant.notify.messages.process_selection.error'),
-        //    __('internship-applicant.notify.title.error')
-        //);
-        //
-        //return redirect()->back();
+        if ($results && isset($results['status'], $results['evaluation_results']) && is_countable($results['evaluation_results'])) {
+            notify()->success(
+                __('internship-applicant.notify.messages.process_selection.success'),
+                __('internship-applicant.notify.title.success')
+            );
+
+            $request->session()->put('results', $results);
+
+            return redirect()->route('internship-applicants.applicant-selection-result', $filters);
+        }
+
+        notify()->error(
+            __('internship-applicant.notify.messages.process_selection.error'),
+            __('internship-applicant.notify.title.error')
+        );
+
+        return redirect()->back();
     }
 
     public function applicantSelectionResult(Request $request): View

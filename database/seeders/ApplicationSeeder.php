@@ -12,6 +12,6 @@ class ApplicationSeeder extends Seeder
      */
     public function run(): void
     {
-        Education::factory(100)->create();
+        Education::factory(200)->create();
     }
 }
