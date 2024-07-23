@@ -97,29 +97,6 @@ class AnalyticalHierarchyProcessAction
 
                 $evaluationResults[] = ['application_id' => $application->id, 'final_score' => $score];
 
-                //foreach ($criteria as $i => $criterion) {
-                //    $criteriaWeight = $priorityVector[$i];
-                //    $subCriteria    = Subcriteria::where('criteria_id', $criterion->id)
-                //        ->get();
-                //    if ($subCriteria->count() > 0) {
-                //        foreach ($subCriteria as $j => $sub) {
-                //            // Nilai / GPA
-                //            if ($i === 0) {
-                //                $subWeight = $subCriteriaWeights[$criterion->id][$j];
-                //                $application->education->gpa;
-                //            }
-                //            // Jurusan
-                //            // Tingkat Pendidikan
-                //
-                //            $criteriaName = $sub->name;
-                //            //$score += $application->$criteriaName * $criteriaWeight * $subWeight;
-                //            $score += $criteriaWeight * $subWeight;
-                //        }
-                //    } else {
-                //        $criteriaName = $criterion->name;
-                //        $score        += $application->$criteriaName * $criteriaWeight;
-                //    }
-                //}
             }
         }
 
@@ -129,11 +106,11 @@ class AnalyticalHierarchyProcessAction
                 $rand = $index / 10000;
 
                 return [
-                    ...$item,
+                    'application_id' => hashIdsEncode($item['application_id']),
                     'final_score' => round($item['final_score'] + $rand, 4),
                 ];
             })
-            ->sortByDesc('score')
+            ->sortByDesc('final_score')
             ->values();
 
         //// Step 7: Store Final Results
@@ -151,7 +128,7 @@ class AnalyticalHierarchyProcessAction
 
         return [
             'status' => true,
-            'evaluation_results' => $evaluationResults
+            'evaluation_results' => $evaluationResults,
         ];
     }
 
