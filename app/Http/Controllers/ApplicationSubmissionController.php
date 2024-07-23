@@ -29,7 +29,7 @@ class ApplicationSubmissionController extends Controller implements HasMiddlewar
     {
         $perPage = $request->query('perPage', 10);
 
-        $data['applications'] = Auth::user()->applicants()->paginate($perPage);
+        $data['applications'] = Auth::user()->applications()->paginate($perPage);
 
         return view('pages.application-submission.index', compact('data'));
     }
@@ -38,7 +38,7 @@ class ApplicationSubmissionController extends Controller implements HasMiddlewar
     {
         $perPage = $request->query('perPage', 10);
 
-        $data['applications'] = Auth::user()->applicants()->paginate($perPage);
+        $data['applications'] = Auth::user()->applications()->paginate($perPage);
 
         return view('pages.application-submission.create', compact('data'));
     }
@@ -49,7 +49,7 @@ class ApplicationSubmissionController extends Controller implements HasMiddlewar
 
         try {
             DB::transaction(function () use ($data) {
-                $application = Auth::user()->applicants()->create([
+                $application = Auth::user()->applications()->create([
                     'full_name' => $data['full_name'],
                     'birth_place' => $data['birth_place'],
                     'birth_date' => $data['birth_date'],
@@ -85,14 +85,14 @@ class ApplicationSubmissionController extends Controller implements HasMiddlewar
 
     public function show(string $hashedId): View
     {
-        $data['application'] = Auth::user()->applicants()->where('id', hashIdsDecode($hashedId))->firstOrFail();
+        $data['application'] = Auth::user()->applications()->where('id', hashIdsDecode($hashedId))->firstOrFail();
 
         return view('pages.application-submission.show', compact('data'));
     }
 
     public function print(string $hashedId): View
     {
-        $data['application'] = Auth::user()->applicants()->where('id', hashIdsDecode($hashedId))->firstOrFail();
+        $data['application'] = Auth::user()->applications()->where('id', hashIdsDecode($hashedId))->firstOrFail();
 
         return view('pages.application-submission.print', compact('data'));
     }
