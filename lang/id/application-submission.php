@@ -65,4 +65,17 @@ return [
         'accepted' => 'Diterima',
         'rejected' => 'Ditolak',
     ],
+
+    'notify' => [
+        'title' => [
+            'success' => 'Berhasil',
+            'error' => 'Oops, terjadi kesalahan',
+        ],
+        'messages' => [
+            'store' => [
+                'success' => 'Anda telah menambahkan data pengajuan magang.',
+                'error' => 'Tidak dapat menambahkan data pengajuan magang.',
+            ]
+        ]
+    ],
 ];

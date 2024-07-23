@@ -66,4 +66,17 @@ return [
         'accepted' => 'Accepted',
         'rejected' => 'Rejected',
     ],
+
+    'notify' => [
+        'title' => [
+            'success' => 'Success',
+            'error' => 'Oops! Something went wrong.',
+        ],
+        'messages' => [
+            'store' => [
+                'success' => 'Application Data successfully added.',
+                'error' => 'Application Data failed to be added.',
+            ],
+        ]
+    ],
 ];

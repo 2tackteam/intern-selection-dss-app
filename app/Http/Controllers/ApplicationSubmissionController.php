@@ -66,9 +66,19 @@ class ApplicationSubmissionController extends Controller implements HasMiddlewar
                 ]);
             });
 
+            notify()->success(
+                __('application-submission.notify.messages.store.success'),
+                __('application-submission.notify.title.success')
+            );
 
-            return redirect()->route('application-submissions.index')->with('success', 'Data berhasil ditambahkan');
+            return redirect()->route('application-submissions.index');
         } catch (\Throwable $throwable) {
+
+            notify()->error(
+                __('application-submission.notify.messages.store.error'),
+                __('application-submission.notify.title.error')
+            ) ;
+
             return redirect()->back()->withInput($request->all());
         }
     }
