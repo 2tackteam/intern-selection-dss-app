@@ -27,6 +27,10 @@ class PermissionSeeder extends Seeder
             'print internship-applicants',
             'selection internship-applicants',
 
+            'view applications',
+            'create applications',
+            'print applications',
+
             'update profile',
             'update password',
             'delete account',
@@ -36,7 +40,21 @@ class PermissionSeeder extends Seeder
             Permission::create(['name' => "$permission"]);
         }
 
-        Role::create(['name' => 'admin'])->givePermissionTo($permissions);
+        Role::create(['name' => 'admin'])->syncPermissions([
+            'view-menu dashboard',
+            'view-menu internship-applicants',
+            'view-menu profile',
+
+            'view internship-applicants',
+            'print internship-applicants',
+            'selection internship-applicants',
+
+            'update profile',
+            'update password',
+            'delete account',
+        ]);
+
+
         Role::create(['name' => 'user'])->syncPermissions([
             'view-menu dashboard',
             'view-menu application-submissions',

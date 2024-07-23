@@ -15,6 +15,7 @@ return [
 
     'dashboard' => 'Dashboard',
     'internship_applicant' => 'Pelamar Magang',
+    'application_submission' => 'Pengajuan Lamaran Magang',
     'profile' => 'Profil',
     'logout' => 'Log Out',
 ];

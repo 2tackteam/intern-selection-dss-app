@@ -32,6 +32,20 @@ Route::middleware('auth')->group(function () {
             Route::get('/{application}/print', [InternshipApplicantController::class, 'print'])->name('print');
             Route::get('/applicant/selection', [InternshipApplicantController::class, 'applicantSelection'])->name('applicant-selection');
         });
+
+
+    /**
+     * Application Submissions Controller
+     */
+    Route::prefix('application-submissions')
+        ->name('application-submissions.')
+        ->group(function () {
+            Route::get('/', [\App\Http\Controllers\ApplicationSubmissionController::class, 'index'])->name('index');
+            Route::get('/create', [\App\Http\Controllers\ApplicationSubmissionController::class, 'create'])->name('create');
+            Route::post('/', [\App\Http\Controllers\ApplicationSubmissionController::class, 'store'])->name('store');
+            Route::get('/{application}', [\App\Http\Controllers\ApplicationSubmissionController::class, 'show'])->name('show');
+            Route::get('/{application}/print', [\App\Http\Controllers\ApplicationSubmissionController::class, 'print'])->name('print');
+        });
 });
 
 require __DIR__.'/auth.php';

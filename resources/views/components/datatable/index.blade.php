@@ -39,31 +39,34 @@
 
 
 {{-- Table Section --}}
-<table class="datatable table-auto border-collapse border-none w-full text-gray-800 dark:text-gray-200">
-    <thead>
-    @if(isset($thead))
-        {!! $thead !!}
-    @endif
-    </thead>
+<div class="overflow-x-auto">
+    <table class="datatable table-auto border-collapse border-none w-full text-gray-800 dark:text-gray-200">
+        <thead>
+        @if(isset($thead))
+            {!! $thead !!}
+        @endif
+        </thead>
 
-    <tbody>
-    @if(isset($tbody))
-        {!! $tbody !!}
-    @endif
-    </tbody>
-</table>
+        <tbody>
+        @if(isset($tbody))
+            {!! $tbody !!}
+        @endif
+        </tbody>
+    </table>
 
-@if($collection->count() > 0)
-    <div id="{{ $noRecordsMessage }}" class="text-gray-800 dark:text-gray-200 text-center mb-5 hidden">
-        No matching records found
+    @if($collection->count() > 0)
+        <div id="{{ $noRecordsMessage }}" class="text-gray-800 dark:text-gray-200 text-center mb-5 hidden">
+            No matching records found
+        </div>
+    @endif
+
+    {{-- Pagination Section --}}
+    <div class="my-2">
+        {!! $lengthAwarePaginator->links() !!}
     </div>
-@endif
 
-{{-- Pagination Section --}}
-<div class="my-2">
-    {!! $lengthAwarePaginator->links() !!}
+
 </div>
-
 
 @push('styles')
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.0/css/dataTables.dataTables.css"/>
