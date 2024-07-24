@@ -103,4 +103,12 @@ return [
         ],
     ],
 
+
+    'modals' => [
+        'confirm_store_applicant_selection_result' => [
+            'title' => 'Apakah Anda yakin ingin menyimpan hasil seleksi ini?',
+            'subtitle' => 'Setelah menyimpan hasil seleksi ini, status lamaran akan diperbarui sesuai dengan ketentuan nilai ambang batas yang telah diinput.'
+        ]
+    ]
+
 ];

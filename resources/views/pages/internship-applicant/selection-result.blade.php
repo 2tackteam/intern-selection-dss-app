@@ -32,7 +32,7 @@
 
 
                         <div class="sm:max-w-full md:max-w-xl">
-                            <form method="post" action="{{ route('internship-applicants.store.applicant-selection-result') }}"
+                            <form id="store-applicant-selection-result" method="post" action="{{ route('internship-applicants.store.applicant-selection-result') }}"
                                   class="mt-6 space-y-6">
                                 @csrf
 
@@ -51,13 +51,38 @@
 
 
                                 <div class="flex items-center gap-4">
-                                    <x-primary-button>
+                                    <x-danger-button
+                                        x-data=""
+                                        x-on:click.prevent="$dispatch('open-modal', 'confirm-store-applicant-selection-result')"
+                                    >
                                         <i class="fas fa-save mr-2"></i>
                                         {{ __('internship-applicant.buttons.save_result') }}
-                                    </x-primary-button>
+                                    </x-danger-button>
                                 </div>
                             </form>
                         </div>
+
+                        <x-modal name="confirm-store-applicant-selection-result" focusable>
+                            <div class="p-6">
+                                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                    {{ __('internship-applicant.modals.confirm_store_applicant_selection_result.title') }}
+                                </h2>
+
+                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                    {{ __('internship-applicant.modals.confirm_store_applicant_selection_result.subtitle') }}
+                                </p>
+
+                                <div class="mt-6 flex justify-end">
+                                    <x-secondary-button x-on:click="$dispatch('close')">
+                                        {{ __('buttons.cancel') }}
+                                    </x-secondary-button>
+
+                                    <x-danger-button class="ms-3" form="store-applicant-selection-result">
+                                        {{ __('buttons.save') }}
+                                    </x-danger-button>
+                                </div>
+                            </div>
+                        </x-modal>
 
                         <div class="mt-10">
                             <x-datatable :id="'dtEvaluationResults'" :collection="$data['evaluation_results']">
