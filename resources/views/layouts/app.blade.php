@@ -1,3 +1,6 @@
+@props(['navigation' => true])
+
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -11,12 +14,22 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+        <link href="{{ asset('css/flatpickr.min.css') }}" rel="stylesheet" />
+
+        @notifyCss
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        @stack('styles')
+        @stack('child-styles')
+
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
+            @if($navigation)
+                @include('layouts.navigation')
+            @endif
 
             <!-- Page Heading -->
             @isset($header)
@@ -32,5 +45,25 @@
                 {{ $slot }}
             </main>
         </div>
+
+
+        <script src="{{ asset('js/jquery-3.6.0.js') }}"></script>
+        <script src="{{ asset('js/flatpickr.min.js') }}"></script>
+        <script src="{{ asset('js/flatpickr_dist_l10n_id.js') }}"></script>
+
+        <script>
+            $('input[type="date"]').flatpickr({
+                altInput: true,
+                altFormat: "F j, Y",
+                dateFormat: "Y-m-d",
+                locale: `{{ config('app.locale') }}`
+            })
+        </script>
+
+        <x-notify::notify />
+        @notifyJs
+
+        @stack('scripts')
+        @stack('child-scripts')
     </body>
 </html>

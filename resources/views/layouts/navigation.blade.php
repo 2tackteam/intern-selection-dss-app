@@ -12,11 +12,26 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+                    @can('view-menu dashboard')
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('nav-menu.dashboard') }}
+                        </x-nav-link>
+                    @endcan
+
+                    @can('view-menu internship-applicants')
+                        <x-nav-link :href="route('internship-applicants.index')" :active="request()->routeIs('internship-applicants.index')">
+                            {{ __('nav-menu.internship_applicant') }}
+                        </x-nav-link>
+                    @endcan
+
+                    @can('view-menu application-submissions')
+                        <x-nav-link :href="route('application-submissions.index')" :active="request()->routeIs('application-submissions.index')">
+                            {{ __('nav-menu.application_submission') }}
+                        </x-nav-link>
+                    @endcan
                 </div>
             </div>
+
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -34,9 +49,11 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
+                        @can('view-menu dashboard')
+                            <x-dropdown-link :href="route('profile.edit')">
+                                {{ __('nav-menu.profile') }}
+                            </x-dropdown-link>
+                        @endcan
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -45,11 +62,13 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('nav-menu.logout') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
                 </x-dropdown>
+
+                <x-toggle-theme class="ml-2"/>
             </div>
 
             <!-- Hamburger -->
@@ -60,16 +79,34 @@
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
+
+                <x-toggle-theme class="ml-2" />
             </div>
         </div>
     </div>
 
+{{--    <x-toggle-theme class="ml-2"/>--}}
+
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
+            @can('view-menu dashboard')
+                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('nav-menu.dashboard') }}
+                </x-responsive-nav-link>
+            @endcan
+
+            @can('view-menu internship-applicants')
+                <x-responsive-nav-link :href="route('internship-applicants.index')" :active="request()->routeIs('internship-applicants.index')">
+                    {{ __('nav-menu.internship_applicant') }}
+                </x-responsive-nav-link>
+            @endcan
+
+            @can('view-menu application-submissions')
+                <x-responsive-nav-link :href="route('application-submissions.index')" :active="request()->routeIs('application-submissions.index')">
+                    {{ __('nav-menu.application_submission') }}
+                </x-responsive-nav-link>
+        @endcan
         </div>
 
         <!-- Responsive Settings Options -->
@@ -80,9 +117,11 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
+                @can('view-menu dashboard')
+                    <x-responsive-nav-link :href="route('profile.edit')">
+                        {{ __('nav-menu.profile') }}
+                    </x-responsive-nav-link>
+                @endcan
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
@@ -91,7 +130,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('nav-menu.logout') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

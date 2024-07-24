@@ -1,20 +1,56 @@
 <?php
 
+use App\Http\Controllers\InternshipApplicantController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('pages.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
+    /**
+     * Profile Controller
+     */
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    /**
+     * Internship Applicants Controller
+     */
+    Route::prefix('internship-applicants')
+        ->name('internship-applicants.')
+        ->group(function () {
+            Route::get('/', [InternshipApplicantController::class, 'index'])->name('index');
+            Route::get('/{application}', [InternshipApplicantController::class, 'show'])->name('show');
+            Route::get('/{application}/print', [InternshipApplicantController::class, 'print'])->name('print');
+            Route::get('/applicant/selection', [InternshipApplicantController::class, 'applicantSelection'])->name('applicant-selection');
+            Route::post('/applicant/process', [InternshipApplicantController::class, 'processSelection'])->name('process-selection');
+            Route::get('/applicant/selection/result', [InternshipApplicantController::class, 'applicantSelectionResult'])->name('applicant-selection-result');
+            Route::post('/applicant/selection/result', [InternshipApplicantController::class, 'storeApplicantSelectionResult'])->name('store.applicant-selection-result');
+
+            Route::get('/preview/selection-results', [InternshipApplicantController::class, 'previewSelectionResult'])->name('preview-selection-result');
+            Route::get('/preview/selection-results/print', [InternshipApplicantController::class, 'printSelectionResult'])->name('print-selection-result');
+        });
+
+    /**
+     * Application Submissions Controller
+     */
+    Route::prefix('application-submissions')
+        ->name('application-submissions.')
+        ->group(function () {
+            Route::get('/', [\App\Http\Controllers\ApplicationSubmissionController::class, 'index'])->name('index');
+            Route::get('/create', [\App\Http\Controllers\ApplicationSubmissionController::class, 'create'])->name('create');
+            Route::post('/', [\App\Http\Controllers\ApplicationSubmissionController::class, 'store'])->name('store');
+            Route::get('/{application}', [\App\Http\Controllers\ApplicationSubmissionController::class, 'show'])->name('show');
+            Route::get('/{application}/print', [\App\Http\Controllers\ApplicationSubmissionController::class, 'print'])->name('print');
+        });
 });
 
 require __DIR__.'/auth.php';
