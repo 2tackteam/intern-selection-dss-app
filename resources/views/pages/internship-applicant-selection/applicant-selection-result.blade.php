@@ -88,14 +88,14 @@
                             <x-datatable :id="'dtEvaluationResults'" :collection="$data['evaluation_results']">
                                 <x-slot:thead>
                                     <x-datatable.row isHeader>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.ranking')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.name')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.gender')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.email')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.major')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.education')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.gpa')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.score')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection.tables.headers.ranking')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection.tables.headers.name')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection.tables.headers.gender')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection.tables.headers.email')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection.tables.headers.major')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection.tables.headers.education')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection.tables.headers.gpa')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection.tables.headers.score')"/>
                                     </x-datatable.row>
                                 </x-slot:thead>
                                 <x-slot:tbody>

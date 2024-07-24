@@ -26,6 +26,20 @@ return [
         'subtitle' => "The following is a list of internship applicants that have been sorted by selection score.",
     ],
 
+    'tables' => [
+        'headers' => [
+            'ranking' => 'Ranking',
+            'name' => 'Applicant Name',
+            'gender' => 'Gender',
+            'email' => 'Email',
+            'major' => 'Major',
+            'education' => 'Education',
+            'gpa' => 'GPA',
+            'status' => 'Status',
+            'score' => 'Selection Score',
+        ],
+    ],
+
     'buttons' => [
         'selection' => 'Applicant Selection',
         'save_result' => 'Simpan Hasil Peserta',

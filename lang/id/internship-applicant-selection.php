@@ -26,6 +26,20 @@ return [
         'subtitle' => "Berikut ini adalah daftar pelamar magang yang telah diurutkan berdasarkan nilai seleksi.",
     ],
 
+    'tables' => [
+        'headers' => [
+            'ranking' => 'Ranking',
+            'name' => 'Nama Pelamar',
+            'gender' => 'Jenis Kelamin',
+            'email' => 'Alamat Email',
+            'major' => 'Jurusan',
+            'education' => 'Pendidikan',
+            'gpa' => 'IPK / Nilai Rata-rata',
+            'status' => 'Status',
+            'score' => 'Nilai Seleksi',
+        ],
+    ],
+
     'buttons' => [
         'selection' => 'Seleksi Pelamar',
         'save_result' => 'Simpan Hasil Peserta',
