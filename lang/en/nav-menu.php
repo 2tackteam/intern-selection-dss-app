@@ -15,6 +15,8 @@ return [
 
     'dashboard' => 'Dashboard',
     'internship_applicant' => 'Internship Applicant',
+    'internship_applicant_selection' => 'Internship Applicant Selection',
+    'internship_applicant_selection_result' => 'Internship Applicant Selection Result',
     'application_submission' => 'Internship Application Submission',
     'profile' => 'Profile',
     'logout' => 'Logout',

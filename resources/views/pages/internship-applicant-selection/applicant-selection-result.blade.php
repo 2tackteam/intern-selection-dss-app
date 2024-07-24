@@ -5,7 +5,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('internship-applicant.selection_result.title') }}
+            {{ __('internship-applicant-selection.result.page_title') }}
         </h2>
     </x-slot>
 
@@ -14,7 +14,7 @@
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="contain-inline-size">
 
-                    <x-link-button class="mb-4" href="{{ route('internship-applicants.applicant-selection') }}">
+                    <x-link-button class="mb-4" href="{{ route('internship-applicant-selections.index') }}">
                         <i class="fas fa-arrow-left mr-2"></i>
                         {{__('buttons.back')}}
                     </x-link-button>
@@ -22,17 +22,17 @@
                     <section class="mt-3">
                         <header>
                             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                                {{ __('internship-applicant.selection_result.title') }}
+                                {{ __('internship-applicant-selection.result.title') }}
                             </h2>
 
                             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                                {{ __('internship-applicant.selection_result.subtitle') }}
+                                {{ __('internship-applicant-selection.result.subtitle') }}
                             </p>
                         </header>
 
 
                         <div class="sm:max-w-full md:max-w-xl">
-                            <form id="store-applicant-selection-result" method="post" action="{{ route('internship-applicants.store.applicant-selection-result') }}"
+                            <form id="store-applicant-selection-result" method="post" action="{{ route('internship-applicant-selections.process-result') }}"
                                   class="mt-6 space-y-6">
                                 @csrf
 
@@ -56,7 +56,7 @@
                                         x-on:click.prevent="$dispatch('open-modal', 'confirm-store-applicant-selection-result')"
                                     >
                                         <i class="fas fa-save mr-2"></i>
-                                        {{ __('internship-applicant.buttons.save_result') }}
+                                        {{ __('internship-applicant-selection.buttons.save_result') }}
                                     </x-danger-button>
                                 </div>
                             </form>
@@ -65,11 +65,11 @@
                         <x-modal name="confirm-store-applicant-selection-result" focusable>
                             <div class="p-6">
                                 <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                                    {{ __('internship-applicant.modals.confirm_store_applicant_selection_result.title') }}
+                                    {{ __('internship-applicant-selection.modals.confirm_store_applicant_selection_result.title') }}
                                 </h2>
 
                                 <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                                    {{ __('internship-applicant.modals.confirm_store_applicant_selection_result.subtitle') }}
+                                    {{ __('internship-applicant-selection.modals.confirm_store_applicant_selection_result.subtitle') }}
                                 </p>
 
                                 <div class="mt-6 flex justify-end">
@@ -88,14 +88,14 @@
                             <x-datatable :id="'dtEvaluationResults'" :collection="$data['evaluation_results']">
                                 <x-slot:thead>
                                     <x-datatable.row isHeader>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.ranking')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.name')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.gender')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.email')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.major')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.education')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.gpa')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.score')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection.tables.headers.ranking')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection.tables.headers.name')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection.tables.headers.gender')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection.tables.headers.email')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection.tables.headers.major')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection.tables.headers.education')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection.tables.headers.gpa')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection.tables.headers.score')"/>
                                     </x-datatable.row>
                                 </x-slot:thead>
                                 <x-slot:tbody>

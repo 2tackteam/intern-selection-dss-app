@@ -20,12 +20,21 @@ class PermissionSeeder extends Seeder
         $permissions = [
             'view-menu dashboard',
             'view-menu internship-applicants',
+            'view-menu internship-applicant-selections',
+            'view-menu internship-applicant-selection-results',
             'view-menu application-submissions',
             'view-menu profile',
 
             'view internship-applicants',
             'print internship-applicants',
-            'selection internship-applicants',
+
+            'selection internship-applicant-selections',
+            'process-selection internship-applicant-selections',
+            'result internship-applicant-selections',
+            'process-result internship-applicant-selections',
+
+            'view internship-applicant-selection-results',
+            'print internship-applicant-selection-results',
 
             'view applications',
             'create applications',
@@ -43,11 +52,20 @@ class PermissionSeeder extends Seeder
         Role::create(['name' => 'admin'])->syncPermissions([
             'view-menu dashboard',
             'view-menu internship-applicants',
+            'view-menu internship-applicant-selections',
+            'view-menu internship-applicant-selection-results',
             'view-menu profile',
 
             'view internship-applicants',
             'print internship-applicants',
-            'selection internship-applicants',
+
+            'selection internship-applicant-selections',
+            'process-selection internship-applicant-selections',
+            'result internship-applicant-selections',
+            'process-result internship-applicant-selections',
+
+            'view internship-applicant-selection-results',
+            'print internship-applicant-selection-results',
 
             'update profile',
             'update password',

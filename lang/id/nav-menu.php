@@ -15,6 +15,8 @@ return [
 
     'dashboard' => 'Dashboard',
     'internship_applicant' => 'Pelamar Magang',
+    'internship_applicant_selection' => 'Seleksi Pelamar Magang',
+    'internship_applicant_selection_result' => 'Hasil Seleksi Pelamar Magang',
     'application_submission' => 'Pengajuan Lamaran Magang',
     'profile' => 'Profil',
     'logout' => 'Log Out',

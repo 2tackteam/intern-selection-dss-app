@@ -24,6 +24,18 @@
                         </x-nav-link>
                     @endcan
 
+                    @can('view-menu internship-applicant-selections')
+                        <x-nav-link :href="route('internship-applicant-selections.index')" :active="request()->routeIs('internship-applicant-selections.index')">
+                            {{ __('nav-menu.internship_applicant_selection') }}
+                        </x-nav-link>
+                    @endcan
+
+                    @can('view-menu internship-applicant-selection-results')
+                        <x-nav-link :href="route('internship-applicant-selection-results.index')" :active="request()->routeIs('internship-applicant-selection-results.index')">
+                            {{ __('nav-menu.internship_applicant_selection_result') }}
+                        </x-nav-link>
+                    @endcan
+
                     @can('view-menu application-submissions')
                         <x-nav-link :href="route('application-submissions.index')" :active="request()->routeIs('application-submissions.index')">
                             {{ __('nav-menu.application_submission') }}

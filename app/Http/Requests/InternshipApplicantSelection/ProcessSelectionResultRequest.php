@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\InternshipApplicant;
+namespace App\Http\Requests\InternshipApplicantSelection;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreApplicantSelectionResultRequest extends FormRequest
+class ProcessSelectionResultRequest extends FormRequest
 {
     public function rules(): array
     {

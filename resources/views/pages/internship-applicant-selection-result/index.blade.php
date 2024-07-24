@@ -6,7 +6,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('internship-applicant.selection_result.title') }}
+            {{ __('internship-applicant-selection-result.index.title') }}
         </h2>
     </x-slot>
 
@@ -15,12 +15,8 @@
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="contain-inline-size">
 
-                    <x-link-button class="mb-4" href="{{ route('internship-applicants.index') }}">
-                        <i class="fas fa-arrow-left mr-2"></i>
-                        {{__('buttons.back')}}
-                    </x-link-button>
 
-                    <x-link-button class="mb-4 float-right" href="{{ route('internship-applicants.print-selection-result') }}">
+                    <x-link-button class="mb-4 float-right" href="{{ route('internship-applicant-selection-results.print') }}">
                         <i class="fas fa-print mr-2"></i>
                         {{__('internship-applicant.buttons.print')}}
                     </x-link-button>
@@ -28,11 +24,11 @@
                     <section class="mt-3">
                         <header>
                             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                                {{ __('internship-applicant.selection_result.title') }}
+                                {{ __('internship-applicant-selection-result.index.title') }}
                             </h2>
 
                             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                                {{ __('internship-applicant.selection_result.subtitle') }}
+                                {{ __('internship-applicant-selection-result.index.subtitle') }}
                             </p>
                         </header>
 
@@ -55,15 +51,15 @@
                             <x-datatable :id="'dtSelectionResults'" :collection="$data['selection_results']">
                                 <x-slot:thead>
                                     <x-datatable.row isHeader>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.ranking')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.name')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.gender')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.email')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.major')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.education')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.gpa')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.status')"/>
-                                        <x-datatable.col :value="__('internship-applicant.tables.headers.score')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection-result.tables.headers.ranking')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection-result.tables.headers.name')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection-result.tables.headers.gender')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection-result.tables.headers.email')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection-result.tables.headers.major')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection-result.tables.headers.education')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection-result.tables.headers.gpa')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection-result.tables.headers.status')"/>
+                                        <x-datatable.col :value="__('internship-applicant-selection-result.tables.headers.score')"/>
                                     </x-datatable.row>
                                 </x-slot:thead>
                                 <x-slot:tbody>

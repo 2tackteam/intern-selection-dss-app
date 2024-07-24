@@ -1,10 +1,10 @@
 @php use App\Enums\ApplicationStatusEnum;use App\Models\Application; @endphp
 <table>
     <tr>
-        <th>{{ __('internship-applicant.selection_result.title') }}</th>
+        <th>{{ __('internship-applicant.selection_result.index.title') }}</th>
     </tr>
     <tr>
-        <th>{{ __('internship-applicant.selection_result.subtitle') }}</th>
+        <th>{{ __('internship-applicant.selection_result.index.subtitle') }}</th>
     </tr>
 </table>
 
@@ -12,15 +12,15 @@
 <table>
     <thead>
     <tr>
-        <td>{{__('internship-applicant.tables.headers.ranking')}}</td>
-        <td>{{__('internship-applicant.tables.headers.name')}}</td>
-        <td>{{__('internship-applicant.tables.headers.gender')}}</td>
-        <td>{{__('internship-applicant.tables.headers.email')}}</td>
-        <td>{{__('internship-applicant.tables.headers.major')}}</td>
-        <td>{{__('internship-applicant.tables.headers.education')}}</td>
-        <td>{{__('internship-applicant.tables.headers.gpa')}}</td>
-        <td>{{__('internship-applicant.tables.headers.status')}}</td>
-        <td>{{__('internship-applicant.tables.headers.score')}}</td>
+        <td>{{__('internship-applicant-selection-result.tables.headers.ranking')}}</td>
+        <td>{{__('internship-applicant-selection-result.tables.headers.name')}}</td>
+        <td>{{__('internship-applicant-selection-result.tables.headers.gender')}}</td>
+        <td>{{__('internship-applicant-selection-result.tables.headers.email')}}</td>
+        <td>{{__('internship-applicant-selection-result.tables.headers.major')}}</td>
+        <td>{{__('internship-applicant-selection-result.tables.headers.education')}}</td>
+        <td>{{__('internship-applicant-selection-result.tables.headers.gpa')}}</td>
+        <td>{{__('internship-applicant-selection-result.tables.headers.status')}}</td>
+        <td>{{__('internship-applicant-selection-result.tables.headers.score')}}</td>
     </tr>
     </thead>
     <tbody>
