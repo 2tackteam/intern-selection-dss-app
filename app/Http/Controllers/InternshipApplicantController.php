@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Actions\AHP\AnalyticalHierarchyProcessInstance;
 use App\Actions\AHP\EvaluationResults;
 use App\Enums\ApplicationStatusEnum;
+use App\Exports\InternshipApplicantExport;
 use App\Http\Requests\InternshipApplicant\StoreApplicantSelectionResultRequest;
 use App\Models\Application;
 use App\Models\Score;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -15,6 +17,8 @@ use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class InternshipApplicantController extends Controller implements HasMiddleware
 {
@@ -26,9 +30,9 @@ class InternshipApplicantController extends Controller implements HasMiddleware
     public static function middleware(): array
     {
         return [
-            new Middleware('can:view internship-applicants', only: ['index', 'show', 'print']),
-            new Middleware('can:selection internship-applicants', only: ['applicantSelection', 'processSelection']),
-            new Middleware('can:print internship-applicants', only: ['print']),
+            new Middleware('can:view internship-applicants', only: ['index', 'show', 'previewSelectionResult']),
+            new Middleware('can:selection internship-applicants', only: ['applicantSelection', 'processSelection', 'applicantSelectionResult', 'storeApplicantSelectionResult']),
+            new Middleware('can:print internship-applicants', only: ['print', 'printSelectionResult']),
         ];
     }
 
@@ -81,7 +85,7 @@ class InternshipApplicantController extends Controller implements HasMiddleware
 
         $this->clearEvaluationResults();
 
-        return view('pages.internship-applicant.selection', compact('data'));
+        return view('pages.internship-applicant.applicant-selection', compact('data'));
     }
 
     /**
@@ -153,7 +157,7 @@ class InternshipApplicantController extends Controller implements HasMiddleware
             return redirect()->back();
         }
 
-        return view('pages.internship-applicant.selection-result', compact('data'));
+        return view('pages.internship-applicant.applicant-selection-result', compact('data'));
     }
 
     /**
@@ -198,5 +202,35 @@ class InternshipApplicantController extends Controller implements HasMiddleware
 
             return redirect()->back();
         }
+    }
+
+    public function previewSelectionResult(Request $request): View
+    {
+        $perPage = $request->query('perPage', 10);
+        $applicationStatus = $request->query('application_status');
+
+        $data['selection_results'] = Score::query()
+            ->with('application.user', 'application.education')
+            ->when($applicationStatus !== null && $applicationStatus !== 'all', function (Builder $query) use ($applicationStatus) {
+                $query->whereRelation('application', 'status', '=', $applicationStatus);
+            })
+            ->orderByDesc('final_score')
+            ->paginate($perPage);
+
+        return view('pages.internship-applicant.preview-selection-result', compact('data'));
+    }
+
+    public function printSelectionResult(Request $request): BinaryFileResponse
+    {
+        $applications = Application::query()
+            ->with('user', 'score', 'education')
+            ->has('score')
+            ->whereNot('status', '=', ApplicationStatusEnum::PENDING->value)
+            ->get();
+
+        $time = now()->format('YmdHis');
+
+        $export = new InternshipApplicantExport($applications);
+        return Excel::download($export, "internship-applicant_$time.xlsx");
     }
 }

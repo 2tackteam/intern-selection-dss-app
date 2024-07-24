@@ -76,6 +76,7 @@ return [
     ],
 
     'status' => [
+        'all' => 'Semua',
         'pending' => 'Pending',
         'accepted' => 'Accepted',
         'rejected' => 'Rejected',

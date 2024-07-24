@@ -33,6 +33,8 @@ return [
     'gpa' => 'GPA',
     'gpa_equal' => 'Equivalent to GPA Value',
 
+    'application_status' => 'Application Status',
+
     'application_date_range' => 'Application Date Range',
     'threshold_value' => 'Threshold of Passing Score for Selection of Internship Applicants',
     'threshold_value_description1' => '*Default Threshold Value: :value.',

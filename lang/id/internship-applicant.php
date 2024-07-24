@@ -69,6 +69,7 @@ return [
 
     'buttons' => [
         'selection' => 'Seleksi Peserta',
+        'preview_selection_result' => 'Tampilkan Hasil Seleksi Magang',
         'detail' => 'Detail',
         'print' => 'Cetak',
         'save_result' => 'Simpan Hasil Peserta',
@@ -81,6 +82,7 @@ return [
     ],
 
     'status' => [
+        'all' => 'Semua',
         'pending' => 'Menunggu',
         'accepted' => 'Diterima',
         'rejected' => 'Ditolak',

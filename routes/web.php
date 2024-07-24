@@ -34,6 +34,9 @@ Route::middleware('auth')->group(function () {
             Route::post('/applicant/process', [InternshipApplicantController::class, 'processSelection'])->name('process-selection');
             Route::get('/applicant/selection/result', [InternshipApplicantController::class, 'applicantSelectionResult'])->name('applicant-selection-result');
             Route::post('/applicant/selection/result', [InternshipApplicantController::class, 'storeApplicantSelectionResult'])->name('store.applicant-selection-result');
+
+            Route::get('/preview/selection-results', [InternshipApplicantController::class, 'previewSelectionResult'])->name('preview-selection-result');
+            Route::get('/preview/selection-results/print', [InternshipApplicantController::class, 'printSelectionResult'])->name('print-selection-result');
         });
 
     /**

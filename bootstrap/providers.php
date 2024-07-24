@@ -5,4 +5,5 @@ return [
     Spatie\Permission\PermissionServiceProvider::class,
     Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
+    Maatwebsite\Excel\ExcelServiceProvider::class,
 ];

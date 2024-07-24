@@ -33,6 +33,8 @@ return [
     'gpa' => 'IPK / Nilai rata-rata',
     'gpa_equal' => 'Setara dengan Nilai Rata-rata',
 
+    'application_status' => 'Status Lamaran',
+
     'application_date_range' => 'Rentang Tanggal Pendaftaran',
     'threshold_value' => 'Nilai Ambang Batas Kelulusan Seleksi Pelamar Magang',
     'threshold_value_description1' => '*Nilai Ambang Batang default: :value.',
