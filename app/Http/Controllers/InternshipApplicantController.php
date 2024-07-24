@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\AHP\AnalyticalHierarchyProcessAction;
+use App\Actions\AHP\EvaluationResults;
+use App\Actions\AHP\AnalyticalHierarchyProcessInstance;
+use App\Actions\Collection\CollectionPaginator;
 use App\Models\Application;
+use App\Models\Score;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -12,6 +15,8 @@ use Illuminate\View\View;
 
 class InternshipApplicantController extends Controller implements HasMiddleware
 {
+    use EvaluationResults;
+
     /**
      * Get the middleware that should be assigned to the controller.
      */
@@ -24,13 +29,18 @@ class InternshipApplicantController extends Controller implements HasMiddleware
         ];
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\View\View
+     * @throws \Throwable
+     */
     public function index(Request $request): View
     {
         $perPage = $request->query('perPage', 10);
 
         $data['applicants'] = Application::query()->with('user', 'education')->latest()->paginate($perPage);
 
-        $request->session()->forget('results');
+        $this->flushEvaluationResults();
 
         return view('pages.internship-applicant.index', compact('data'));
     }
@@ -49,6 +59,11 @@ class InternshipApplicantController extends Controller implements HasMiddleware
         return view('pages.internship-applicant.print', compact('data'));
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\View\View
+     * @throws \Throwable
+     */
     public function applicantSelection(Request $request): View
     {
         $perPage = $request->query('perPage', 10);
@@ -57,14 +72,20 @@ class InternshipApplicantController extends Controller implements HasMiddleware
             ->latest('id')
             ->paginate($perPage);
 
-        $request->session()->forget('results');
+        $this->flushEvaluationResults();
 
         return view('pages.internship-applicant.selection', compact('data'));
     }
 
-    public function processSelection(Request $request, AnalyticalHierarchyProcessAction $action): RedirectResponse
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Actions\AHP\AnalyticalHierarchyProcessInstance $AHPAction
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Throwable
+     */
+    public function processSelection(Request $request, AnalyticalHierarchyProcessInstance $AHPAction): RedirectResponse
     {
-        $request->session()->forget('results');
+        $this->flushEvaluationResults();
 
         $filters = null;
 
@@ -89,15 +110,13 @@ class InternshipApplicantController extends Controller implements HasMiddleware
         );
 
         // Calculate AHP
-        $results = $action->calculateAHP($filters);
+        $isSuccess = $AHPAction->calculateAHP($filters);
 
-        if ($results && isset($results['status'], $results['evaluation_results']) && is_countable($results['evaluation_results'])) {
+        if ($isSuccess) {
             notify()->success(
                 __('internship-applicant.notify.messages.process_selection.success'),
                 __('internship-applicant.notify.title.success')
             );
-
-            $request->session()->put('results', $results);
 
             return redirect()->route('internship-applicants.applicant-selection-result', $filters);
         }
@@ -113,14 +132,14 @@ class InternshipApplicantController extends Controller implements HasMiddleware
     public function applicantSelectionResult(Request $request): View|RedirectResponse
     {
         $perPage = $request->query('perPage', 10);
-        $applicationIds = [];
 
-        if ($request->session()->has('results')) {
-            $results = $request->session()->get('results');
-            $evaluationResults = collect($results['evaluation_results']);
-            $data['evaluation_results'] = $evaluationResults;
-
-            $applicationIds = $evaluationResults->map(fn($item) => hashIdsDecode($item['application_id']))->values();
+        if ($this->fetchEvaluationResults()->count() > 0) {
+            $applicationIds = $this->fetchEvaluationResults()->map(fn($item) => hashIdsDecode($item['application_id']))->toArray();
+            $data['evaluation_results'] = Score::query()
+                ->with('application.user', 'application.education')
+                ->whereIn('application_id', $applicationIds)
+                ->orderByDesc('final_score')
+                ->paginate($perPage);
         } else {
 
             notify()->error(
@@ -131,9 +150,6 @@ class InternshipApplicantController extends Controller implements HasMiddleware
             return redirect()->back();
         }
 
-        $data['applicants'] = Application::query()->with('user', 'education')
-            ->whereIn('id', $applicationIds)
-            ->paginate($perPage);
 
         return view('pages.internship-applicant.selection-result', compact('data'));
     }

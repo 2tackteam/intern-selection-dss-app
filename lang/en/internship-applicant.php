@@ -43,6 +43,7 @@ return [
 
     'tables' => [
         'headers' => [
+            'submission_date' => 'Submission Date',
             'full_name' => 'Full Name',
             'date_of_birth' => 'Date Of Birth',
             'place_of_birth' => 'Place Of Birth',
@@ -65,6 +66,7 @@ return [
         'selection' => 'Participant Selection',
         'detail' => 'Details',
         'print' => 'Print',
+        'save_result' => 'Simpan Hasil Peserta',
     ],
 
     'gender' => [

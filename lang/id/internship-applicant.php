@@ -48,6 +48,7 @@ return [
 
     'tables' => [
         'headers' => [
+            'submission_date' => 'Tanggal Pengajuan',
             'full_name' => 'Nama Lengkap',
             'date_of_birth' => 'Tanggal Lahir',
             'place_of_birth' => 'Tempat Lahir',
@@ -70,6 +71,7 @@ return [
         'selection' => 'Seleksi Peserta',
         'detail' => 'Detail',
         'print' => 'Cetak',
+        'save_result' => 'Simpan Hasil Peserta',
     ],
 
     'gender' => [

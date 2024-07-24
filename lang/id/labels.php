@@ -34,4 +34,6 @@ return [
     'gpa_equal' => 'Setara dengan Nilai Rata-rata',
 
     'application_date_range' => 'Rentang Tanggal Pendaftaran',
+
+    'threshold_value' => 'Ambang Batas Nilai Kelulusan Seleksi Pelamar Magang',
 ];

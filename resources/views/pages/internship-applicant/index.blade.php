@@ -23,6 +23,7 @@
                         <x-slot:thead>
                             <x-datatable.row isHeader>
                                 <x-datatable.col :value="'#'"/>
+                                <x-datatable.col :value="__('internship-applicant.tables.headers.submission_date')"/>
                                 <x-datatable.col :value="__('internship-applicant.tables.headers.full_name')"/>
                                 <x-datatable.col :value="__('internship-applicant.tables.headers.date_of_birth')"/>
                                 <x-datatable.col :value="__('internship-applicant.tables.headers.place_of_birth')"/>
@@ -37,6 +38,7 @@
                                 @if($applicant instanceof \App\Models\Application)
                                     <x-datatable.row>
                                         <x-datatable.col :value="$loop->iteration"/>
+                                        <x-datatable.col :value="$applicant->created_at->translatedFormat('d F Y')"/>
                                         <x-datatable.col :value="$applicant->full_name"/>
                                         <x-datatable.col :value="$applicant->birth_place"/>
                                         <x-datatable.col :value="$applicant->birth_date->translatedFormat('d F Y')"/>
