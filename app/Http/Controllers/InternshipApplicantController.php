@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Actions\AHP\AnalyticalHierarchyProcessInstance;
 use App\Actions\AHP\EvaluationResults;
 use App\Enums\ApplicationStatusEnum;
+use App\Exports\PreviewSelectionResultExport;
 use App\Http\Requests\InternshipApplicant\StoreApplicantSelectionResultRequest;
 use App\Models\Application;
 use App\Models\Score;
@@ -16,6 +17,7 @@ use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class InternshipApplicantController extends Controller implements HasMiddleware
@@ -218,7 +220,7 @@ class InternshipApplicantController extends Controller implements HasMiddleware
         return view('pages.internship-applicant.preview-selection-result', compact('data'));
     }
 
-    public function printSelectionResult(Request $request)
+    public function printSelectionResult(Request $request): BinaryFileResponse
     {
         $applications = Application::query()
             ->with('user', 'score', 'education')
@@ -227,6 +229,8 @@ class InternshipApplicantController extends Controller implements HasMiddleware
             ->get();
 
         $time = now()->format('YmdHis');
+
+        return Excel::download(new PreviewSelectionResultExport($applications), 'internship-applicant-' . $time . '.xlsx');
 
     }
 }
