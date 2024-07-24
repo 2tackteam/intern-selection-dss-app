@@ -35,4 +35,7 @@ return [
 
     'application_date_range' => 'Application Date Range',
     'threshold_value' => 'Threshold of Passing Score for Selection of Internship Applicants',
+    'threshold_value_description1' => '*Default Threshold Value: :value.',
+    'threshold_value_description2' => '*Threshold values are automatically displayed based on the Average selection score.',
+    'threshold_value_description3' => '*Enter the passing score threshold to declare applicants who pass the selection.',
 ];

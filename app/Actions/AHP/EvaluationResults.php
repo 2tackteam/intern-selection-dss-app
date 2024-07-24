@@ -11,13 +11,13 @@ trait EvaluationResults
     /**
      * @throws \Throwable
      */
-    public function captureFinalResults(Collection $evaluationResults): void
+    public function captureFinalResults(Collection $evaluationResults): Collection
     {
         DB::transaction(function () use ($evaluationResults) {
             foreach ($evaluationResults as $result) {
                 Score::create([
                     'application_id' => hashIdsDecode($result['application_id']),
-                    'final_score' => $result['final_score'],
+                    'final_score'    => $result['final_score'],
                 ]);
 
                 // Update application status to 'accepted'
@@ -25,7 +25,11 @@ trait EvaluationResults
             }
         });
 
-        request()->session()->put('evaluation_results', $evaluationResults);
+        request()
+            ->session()
+            ->put('evaluation_results', $evaluationResults);
+
+        return $evaluationResults;
     }
 
     public function fetchEvaluationResults(): Collection
@@ -44,7 +48,7 @@ trait EvaluationResults
     /**
      * @throws \Throwable
      */
-    public function flushEvaluationResults(): void
+    public function clearEvaluationResults(): void
     {
         $session = request()->session();
 
@@ -59,7 +63,15 @@ trait EvaluationResults
                 }
             });
 
-            $session->forget('alternative_ranking');
+            $this->flushSessionEvaluationResults();
+        }
+    }
+
+    public function flushSessionEvaluationResults(): void
+    {
+        $session = request()->session();
+        if ($session->has('evaluation_results')) {
+            $session->forget('evaluation_results');
         }
     }
 }

@@ -61,9 +61,9 @@ trait EvaluationWeights
         return Application::where('status', 'pending')
             ->when($filters !== null, function (Builder $query) use ($filters) {
                 $query->when(isset($filters['start_date'], $filters['end_date']), function (Builder $query) use ($filters) {
-                    $query->whereBetween('created_at', [$filters['start_date'] . ' 00:00:00', $filters['end_date'] . ' 23:59:59']);
+                    $query->whereBetween('created_at', [$filters['start_date'].' 00:00:00', $filters['end_date'].' 23:59:59']);
                 })
-                    ->when(isset($filters['gender']) || $filters['gender'] !== 'all', function (Builder $query) use ($filters) {
+                    ->when(isset($filters['gender']) && $filters['gender'] !== 'all', function (Builder $query) use ($filters) {
                         $query->whereIn('gender', [$filters['gender']]);
                     });
             })
@@ -78,7 +78,7 @@ trait EvaluationWeights
 
                 return [
                     'application_id' => hashIdsEncode($item['application_id']),
-                    'final_score'    => round($item['final_score'] + $rand, 4),
+                    'final_score' => round($item['final_score'] + $rand, 4),
                 ];
             })
             ->sortByDesc('final_score')

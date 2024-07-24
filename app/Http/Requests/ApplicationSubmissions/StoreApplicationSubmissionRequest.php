@@ -28,29 +28,29 @@ class StoreApplicationSubmissionRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'required' => __('validation.required'),
-            'string' => __('validation.string'),
-            'max' => __('validation.max.string'),
-            'date' => __('validation.date'),
-            'date_format' => __('validation.date_format'),
-            'before' => __('validation.before'),
-            'decimal' => __('validation.decimal'),
+            'required' => trans('validation.required'),
+            'string' => trans('validation.string'),
+            'max' => trans('validation.max.string'),
+            'date' => trans('validation.date'),
+            'date_format' => trans('validation.date_format'),
+            'before' => trans('validation.before'),
+            'decimal' => trans('validation.decimal'),
         ];
     }
 
     public function attributes(): array
     {
         return [
-            'full_name' => __('validation.attributes.application_submission.full_name'),
-            'birth_place' => __('validation.attributes.application_submission.birth_place'),
-            'birth_date' => __('validation.attributes.application_submission.birth_date'),
-            'gender' => __('validation.attributes.application_submission.gender'),
-            'education_level' => __('validation.attributes.application_submission.education_level'),
-            'institution_name' => __('validation.attributes.application_submission.institution_name'),
-            'major' => __('validation.attributes.application_submission.major'),
-            'start_year' => __('validation.attributes.application_submission.start_year'),
-            'end_year' => __('validation.attributes.application_submission.end_year'),
-            'gpa' => __('validation.attributes.application_submission.gpa'),
+            'full_name' => trans('validation.attributes.application_submission.full_name'),
+            'birth_place' => trans('validation.attributes.application_submission.birth_place'),
+            'birth_date' => trans('validation.attributes.application_submission.birth_date'),
+            'gender' => trans('validation.attributes.application_submission.gender'),
+            'education_level' => trans('validation.attributes.application_submission.education_level'),
+            'institution_name' => trans('validation.attributes.application_submission.institution_name'),
+            'major' => trans('validation.attributes.application_submission.major'),
+            'start_year' => trans('validation.attributes.application_submission.start_year'),
+            'end_year' => trans('validation.attributes.application_submission.end_year'),
+            'gpa' => trans('validation.attributes.application_submission.gpa'),
         ];
     }
 }

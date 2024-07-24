@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/applicant/selection', [InternshipApplicantController::class, 'applicantSelection'])->name('applicant-selection');
             Route::post('/applicant/process', [InternshipApplicantController::class, 'processSelection'])->name('process-selection');
             Route::get('/applicant/selection/result', [InternshipApplicantController::class, 'applicantSelectionResult'])->name('applicant-selection-result');
+            Route::post('/applicant/selection/result', [InternshipApplicantController::class, 'storeApplicantSelectionResult'])->name('store.applicant-selection-result');
         });
 
     /**

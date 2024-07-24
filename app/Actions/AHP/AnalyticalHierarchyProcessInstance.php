@@ -4,6 +4,7 @@ namespace App\Actions\AHP;
 
 use App\Models\Criteria;
 use App\Models\SubCriteria;
+use Illuminate\Support\Collection;
 
 class AnalyticalHierarchyProcessInstance
 {
@@ -12,7 +13,7 @@ class AnalyticalHierarchyProcessInstance
     /**
      * @throws \Throwable
      */
-    public function calculateAHP(?array $filters = null): bool
+    public function calculateAHP(?array $filters = null): Collection
     {
         // Step 1: Retrieve Criteria
         $criteria = Criteria::all();
@@ -48,8 +49,6 @@ class AnalyticalHierarchyProcessInstance
         $evaluationResults = $this->evaluation($criteria, $criteriaWeights, $subCriteriaWeights, $filters);
 
         // Step 6: Capture Final Results
-        $this->captureFinalResults($evaluationResults);
-
-        return true;
+        return $this->captureFinalResults($evaluationResults);
     }
 }

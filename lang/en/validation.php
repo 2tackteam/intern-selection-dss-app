@@ -176,6 +176,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'application_date_range' => [
+            'empty_applications' => 'Internship Applicant Selection Data Not Found.',
+        ],
     ],
 
     /*
@@ -201,6 +204,10 @@ return [
             'start_year' => 'Start Year',
             'end_year' => 'End Year',
             'gpa' => 'GPA',
+        ],
+        'internship_applicant' => [
+            'threshold_default' => 'Threshold Default',
+            'threshold_value' => 'Threshold Value',
         ],
     ],
 

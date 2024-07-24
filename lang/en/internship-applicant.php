@@ -88,9 +88,13 @@ return [
         ],
         'messages' => [
             'process_selection' => [
-                'success' => 'Successful selection of applicants.',
-                'error' => 'Failed applicant selection.',
+                'success' => 'Successfully display the applicant selection results.',
+                'error' => 'Failed to display the applicant selection results.',
             ],
+            'applicant_selection_result' => [
+                'success' => 'Successfully save the applicant selection results.',
+                'error' => 'Failed save the applicant selection results.',
+            ]
         ],
     ],
 

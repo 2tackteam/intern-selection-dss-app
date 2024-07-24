@@ -93,9 +93,13 @@ return [
         ],
         'messages' => [
             'process_selection' => [
-                'success' => 'Berhasil melakukan seleksi pelamar.',
-                'error' => 'Gagal melakukan seleksi pelamar.',
+                'success' => 'Berhasil menampilkan hasil seleksi pelamar.',
+                'error' => 'Gagal menampilkan hasil seleksi pelamar.',
             ],
+            'applicant_selection_result' => [
+                'success' => 'Berhasil menyimpan hasil seleksi pelamar.',
+                'error' => 'Gagal melakukan seleksi pelamar.',
+            ]
         ],
     ],
 

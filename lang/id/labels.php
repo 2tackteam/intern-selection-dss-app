@@ -34,6 +34,8 @@ return [
     'gpa_equal' => 'Setara dengan Nilai Rata-rata',
 
     'application_date_range' => 'Rentang Tanggal Pendaftaran',
-
-    'threshold_value' => 'Ambang Batas Nilai Kelulusan Seleksi Pelamar Magang',
+    'threshold_value' => 'Nilai Ambang Batas Kelulusan Seleksi Pelamar Magang',
+    'threshold_value_description1' => '*Nilai Ambang Batang default: :value.',
+    'threshold_value_description2' => '*Nilai Ambang Batas otomatis ditampilkan berdasarkan dengan nilai Rata-rata seleksi.',
+    'threshold_value_description3' => '*Masukkan nilai ambang batas kelulusan untuk menyatakan pelamar yang lulus seleksi.',
 ];

@@ -31,15 +31,22 @@
                         </header>
 
 
-                        <div class="sm:max-w-full md:max-w-md">
-                            <form method="post" action="{{ route('internship-applicants.process-selection') }}"
+                        <div class="sm:max-w-full md:max-w-xl">
+                            <form method="post" action="{{ route('internship-applicants.store.applicant-selection-result') }}"
                                   class="mt-6 space-y-6">
                                 @csrf
 
+                                <x-text-input id="threshold_default" name="threshold_default" type="hidden" class="mt-1 block w-full"
+                                              :value="$data['threshold_value']" autofocus/>
+
                                 <div>
                                     <x-input-label for="threshold_value" :value="__('labels.threshold_value')"/>
-                                    <x-text-input id="threshold_value" name="threshold_value" type="number" class="mt-1 block w-full"
-                                                  :value="old('threshold_value')" autofocus/>
+                                    <x-text-input id="threshold_value" name="threshold_value" type="number" step="0.01" class="mt-1 block w-full"
+                                                  :value="old('threshold_value', $data['threshold_value'])" autofocus/>
+                                    <x-input-error class="mt-2" :messages="$errors->get('threshold_value')"/>
+                                    <x-input-label for="threshold_value" class="text-[13px] mt-2" :value="__('labels.threshold_value_description1', ['value' => $data['threshold_value']])"/>
+                                    <x-input-label for="threshold_value" class="text-[13px]" :value="__('labels.threshold_value_description2')"/>
+                                    <x-input-label for="threshold_value" class="text-[13px]" :value="__('labels.threshold_value_description3')"/>
                                 </div>
 
 
@@ -53,7 +60,7 @@
                         </div>
 
                         <div class="mt-10">
-                            <x-datatable :id="'dtApplicants'" :collection="$data['applicants']">
+                            <x-datatable :id="'dtEvaluationResults'" :collection="$data['evaluation_results']">
                                 <x-slot:thead>
                                     <x-datatable.row isHeader>
                                         <x-datatable.col :value="__('internship-applicant.tables.headers.ranking')"/>
@@ -71,13 +78,13 @@
                                         @if($result instanceof \App\Models\Score)
                                             <x-datatable.row>
                                                 <x-datatable.col :value="$loop->iteration"/>
-                                                <x-datatable.col :value="$applicant->full_name"/>
-                                                <x-datatable.col :value="__('internship-applicant.gender.'. $applicant->gender)"/>
-                                                <x-datatable.col :value="$applicant->user->email"/>
-                                                <x-datatable.col :value="$applicant->education->major"/>
-                                                <x-datatable.col :value="$applicant->education->education_level"/>
-                                                <x-datatable.col :value="$applicant->education->gpa"/>
-                                                <x-datatable.col :value="$result['final_score'] * 100"/>
+                                                <x-datatable.col :value="$result->application->full_name"/>
+                                                <x-datatable.col :value="__('internship-applicant.gender.'. $result->application->gender)"/>
+                                                <x-datatable.col :value="$result->application->user->email"/>
+                                                <x-datatable.col :value="$result->application->education->major"/>
+                                                <x-datatable.col :value="$result->application->education->education_level"/>
+                                                <x-datatable.col :value="$result->application->education->gpa"/>
+                                                <x-datatable.col :value="$result->final_score * 100"/>
                                             </x-datatable.row>
                                         @endif
                                     @empty

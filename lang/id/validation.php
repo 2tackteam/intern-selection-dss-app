@@ -64,8 +64,8 @@ return [
     ],
     'gte' => [
         'array' => ':Attribute harus memiliki item :value atau lebih.',
-        'file' => ':Attribute :value harus lebih besar dari atau sama dengan :value kilobyte.',
-        'numeric' => ':Attribute :value harus lebih besar dari atau sama dengan :value.',
+        'file' => ':Attribute harus lebih besar dari atau sama dengan :value kilobyte.',
+        'numeric' => ':Attribute harus lebih besar dari atau sama dengan :value.',
         'string' => ':Attribute harus lebih besar dari atau sama dengan :value karakter.',
     ],
     'hex_color' => ':Attribute harus berupa warna heksadesimal yang valid.',
@@ -176,6 +176,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'application_date_range' => [
+            'empty_applications' => 'Data Seleksi Pelamar Magang Tidak Ditemukan.',
+        ],
     ],
 
     /*
@@ -201,6 +204,10 @@ return [
             'start_year' => 'Tahun mulai',
             'end_year' => 'Tahun berakhir',
             'gpa' => 'IPK / Nilai rata-rata',
+        ],
+        'internship_applicant' => [
+            'threshold_default' => 'Ambang Batas Default',
+            'threshold_value' => 'Nilai Ambang Batas',
         ],
     ],
 
