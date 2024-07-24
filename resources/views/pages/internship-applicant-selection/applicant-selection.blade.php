@@ -5,7 +5,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('internship-applicant.selection.page_title') }}
+            {{ __('internship-applicant-selection.applicant_selection.page_title') }}
         </h2>
     </x-slot>
 
@@ -14,25 +14,20 @@
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="contain-inline-size">
 
-                    <x-link-button class="mb-4" href="{{ route('internship-applicants.index') }}">
-                        <i class="fas fa-arrow-left mr-2"></i>
-                        {{__('buttons.back')}}
-                    </x-link-button>
-
                     <section class="mt-3">
                         <header>
                             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                                {{ __('internship-applicant.selection.title') }}
+                                {{ __('internship-applicant-selection.applicant_selection.title') }}
                             </h2>
 
                             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                                {{ __('internship-applicant.selection.subtitle') }}
+                                {{ __('internship-applicant-selection.applicant_selection.subtitle') }}
                             </p>
                         </header>
 
 
                         <div class="sm:max-w-full md:max-w-xl">
-                            <form method="post" action="{{ route('internship-applicants.process-selection') }}"
+                            <form method="post" action="{{ route('internship-applicant-selections.process-selection') }}"
                                   class="mt-6 space-y-6">
                                 @csrf
 
@@ -60,7 +55,7 @@
                                 <div class="flex items-center gap-4">
                                     <x-primary-button>
                                         <i class="fas fa-users-between-lines mr-3"></i>
-                                        {{ __('internship-applicant.buttons.selection') }}
+                                        {{ __('internship-applicant-selection.buttons.selection') }}
                                     </x-primary-button>
                                 </div>
                             </form>

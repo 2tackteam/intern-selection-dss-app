@@ -32,18 +32,9 @@ return [
         'gpa' => 'IPK / Nilai Rata-rata',
         'status' => 'Status',
     ],
-    'selection' => [
-        'page_title' => 'Seleksi Pelamar Magang',
-
-        'title' => 'Seleksi Pelamar Magang',
-        'subtitle' => 'Untuk menyeleksi pelamar yang paling cocok dengan kebutuhan perusahaan.',
-    ],
 
     'selection_result' => [
-        'page_title' => 'Hasil Seleksi Pelamar Magang',
 
-        'title' => 'Hasil Seleksi Pelamar Magang',
-        'subtitle' => 'Berikut ini adalah daftar pelamar magang yang telah diurutkan berdasarkan nilai seleksi.',
     ],
 
     'tables' => [
@@ -56,23 +47,12 @@ return [
             'last_education' => 'Pendidikan Terakhir',
             'status' => 'Status',
             'actions' => 'Aksi',
-
-            'ranking' => 'Ranking',
-            'name' => 'Nama Pelamar',
-            'email' => 'Alamat Email',
-            'major' => 'Jurusan',
-            'education' => 'Pendidikan',
-            'gpa' => 'IPK / Nilai Rata-rata',
-            'score' => 'Nilai Seleksi',
         ],
     ],
 
     'buttons' => [
-        'selection' => 'Seleksi Peserta',
-        'preview_selection_result' => 'Tampilkan Hasil Seleksi Magang',
         'detail' => 'Detail',
         'print' => 'Cetak',
-        'save_result' => 'Simpan Hasil Peserta',
     ],
 
     'gender' => [
@@ -87,30 +67,4 @@ return [
         'accepted' => 'Diterima',
         'rejected' => 'Ditolak',
     ],
-
-    'notify' => [
-        'title' => [
-            'success' => 'Berhasil',
-            'error' => 'Oops, terjadi kesalahan',
-        ],
-        'messages' => [
-            'process_selection' => [
-                'success' => 'Berhasil menampilkan hasil seleksi pelamar.',
-                'error' => 'Gagal menampilkan hasil seleksi pelamar.',
-            ],
-            'applicant_selection_result' => [
-                'success' => 'Berhasil menyimpan hasil seleksi pelamar.',
-                'error' => 'Gagal melakukan seleksi pelamar.',
-            ]
-        ],
-    ],
-
-
-    'modals' => [
-        'confirm_store_applicant_selection_result' => [
-            'title' => 'Apakah Anda yakin ingin menyimpan hasil seleksi ini?',
-            'subtitle' => 'Setelah menyimpan hasil seleksi ini, status lamaran akan diperbarui sesuai dengan ketentuan nilai ambang batas yang telah diinput.'
-        ]
-    ]
-
 ];

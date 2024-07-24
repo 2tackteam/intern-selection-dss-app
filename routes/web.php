@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ApplicationSubmissionController;
 use App\Http\Controllers\InternshipApplicantController;
+use App\Http\Controllers\InternshipApplicantSelection;
+use App\Http\Controllers\InternshipApplicationSelectionResultController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,13 +33,26 @@ Route::middleware('auth')->group(function () {
             Route::get('/', [InternshipApplicantController::class, 'index'])->name('index');
             Route::get('/{application}', [InternshipApplicantController::class, 'show'])->name('show');
             Route::get('/{application}/print', [InternshipApplicantController::class, 'print'])->name('print');
-            Route::get('/applicant/selection', [InternshipApplicantController::class, 'applicantSelection'])->name('applicant-selection');
-            Route::post('/applicant/process', [InternshipApplicantController::class, 'processSelection'])->name('process-selection');
-            Route::get('/applicant/selection/result', [InternshipApplicantController::class, 'applicantSelectionResult'])->name('applicant-selection-result');
-            Route::post('/applicant/selection/result', [InternshipApplicantController::class, 'storeApplicantSelectionResult'])->name('store.applicant-selection-result');
+        });
 
-            Route::get('/preview/selection-results', [InternshipApplicantController::class, 'previewSelectionResult'])->name('preview-selection-result');
-            Route::get('/preview/selection-results/print', [InternshipApplicantController::class, 'printSelectionResult'])->name('print-selection-result');
+    Route::prefix('internship-applicant-selections')
+        ->name('internship-applicant-selections.')
+        ->group(function () {
+
+            Route::get('/', [InternshipApplicantSelection::class, 'index'])->name('index');
+            Route::post('/process', [InternshipApplicantSelection::class, 'processSelection'])->name('process-selection');
+
+            Route::get('/result', [InternshipApplicantSelection::class, 'viewSelectionResult'])->name('result');
+            Route::post('/result/process', [InternshipApplicantSelection::class, 'processSelectionResult'])->name('process-result');
+        });
+
+
+
+    Route::prefix('internship-applicant-selection-results')
+        ->name('internship-applicant-selection-results.')
+        ->group(function () {
+            Route::get('/', [InternshipApplicationSelectionResultController::class, 'index'])->name('index');
+            Route::get('/print', [InternshipApplicationSelectionResultController::class, 'print'])->name('print');
         });
 
     /**
@@ -45,11 +61,11 @@ Route::middleware('auth')->group(function () {
     Route::prefix('application-submissions')
         ->name('application-submissions.')
         ->group(function () {
-            Route::get('/', [\App\Http\Controllers\ApplicationSubmissionController::class, 'index'])->name('index');
-            Route::get('/create', [\App\Http\Controllers\ApplicationSubmissionController::class, 'create'])->name('create');
-            Route::post('/', [\App\Http\Controllers\ApplicationSubmissionController::class, 'store'])->name('store');
-            Route::get('/{application}', [\App\Http\Controllers\ApplicationSubmissionController::class, 'show'])->name('show');
-            Route::get('/{application}/print', [\App\Http\Controllers\ApplicationSubmissionController::class, 'print'])->name('print');
+            Route::get('/', [ApplicationSubmissionController::class, 'index'])->name('index');
+            Route::get('/create', [ApplicationSubmissionController::class, 'create'])->name('create');
+            Route::post('/', [ApplicationSubmissionController::class, 'store'])->name('store');
+            Route::get('/{application}', [ApplicationSubmissionController::class, 'show'])->name('show');
+            Route::get('/{application}/print', [ApplicationSubmissionController::class, 'print'])->name('print');
         });
 });
 
