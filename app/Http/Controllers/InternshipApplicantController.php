@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\AHP\EvaluationResults;
+use App\Enums\ApplicationStatusEnum;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -33,6 +34,7 @@ class InternshipApplicantController extends Controller implements HasMiddleware
 
         $data['applicants'] = Application::query()
             ->with('user', 'education')
+            ->whereIn('status', array_slice(ApplicationStatusEnum::toArray(), 2, 3))
             ->latest()
             ->paginate($perPage);
 
