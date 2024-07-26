@@ -15,6 +15,8 @@ return [
 
     'index' => [
         'page_title' => 'My Application Submissions',
+
+        'application_exists' => 'The internship application has been registered. You are only allowed to apply once.',
     ],
     'show' => [
         'page_title' => 'Applicant Information',

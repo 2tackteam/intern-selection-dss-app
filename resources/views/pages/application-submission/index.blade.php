@@ -15,10 +15,17 @@
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="contain-inline-size">
 
-                    <x-link-button class="mb-4" href="{{ route('application-submissions.create') }}">
-                        <i class="fas fa-plus mr-2"></i>
-                        {{__('application-submission.buttons.create')}}
-                    </x-link-button>
+                    @if($data['applicationExists'])
+                        <p class="mb-4 text-red-500 dark:text-red-400">
+                            {{__('application-submission.index.application_exists')}}
+                        </p>
+                    @else
+                        <x-link-button class="mb-4" href="{{ route('application-submissions.create') }}">
+                            <i class="fas fa-plus mr-2"></i>
+                            {{__('application-submission.buttons.create')}}
+                        </x-link-button>
+                    @endif
+
 
                     <x-datatable :id="'dtApplications'" :collection="$data['applications']">
                         <x-slot:thead>

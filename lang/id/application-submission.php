@@ -15,6 +15,8 @@ return [
 
     'index' => [
         'page_title' => 'Daftar Pengajuan Saya',
+
+        'application_exists' => 'Pengajuan lamaran magang sudah terdaftar. Anda hanya diperbolehkan mendaftar satu kali.',
     ],
     'show' => [
         'page_title' => 'Detail Pengajuan Lamaran Magang',

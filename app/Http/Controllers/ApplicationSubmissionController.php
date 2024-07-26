@@ -30,6 +30,7 @@ class ApplicationSubmissionController extends Controller implements HasMiddlewar
         $perPage = $request->query('perPage', 10);
 
         $data['applications'] = Auth::user()->applications()->paginate($perPage);
+        $data['applicationExists'] = Auth::user()->applications()->exists();
 
         return view('pages.application-submission.index', compact('data'));
     }
