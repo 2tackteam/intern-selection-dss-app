@@ -62,6 +62,7 @@ return [
     ],
 
     'status' => [
+        'draft' => 'Draft',
         'pending' => 'Pending',
         'accepted' => 'Accepted',
         'rejected' => 'Rejected',

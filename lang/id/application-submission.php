@@ -61,6 +61,7 @@ return [
     ],
 
     'status' => [
+        'draft' => 'Draft',
         'pending' => 'Menunggu',
         'accepted' => 'Diterima',
         'rejected' => 'Ditolak',
