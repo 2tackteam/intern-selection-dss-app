@@ -75,22 +75,13 @@
                                                 <x-datatable.col
                                                     :value="$result->application->education->education_level"/>
                                                 <x-datatable.col :value="$result->application->education->gpa"/>
-                                                <x-datatable.col>
-                                                    @if($result->application->status === ApplicationStatusEnum::PENDING->value)
-                                                        <div
-                                                            class="inline-flex items-center px-4 py-2 bg-gray-400 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 tracking-widest">
-                                                            {{ __('application-submission.status.'. $result->application->status) }}
-                                                        </div>
-                                                    @elseif($result->application->status === ApplicationStatusEnum::ACCEPTED->value)
-                                                        <div
-                                                            class="inline-flex items-center px-4 py-2 bg-blue-500 dark:bg-blue-400 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-900 tracking-widest">
-                                                            {{ __('application-submission.status.'. $result->application->status) }}
-                                                        </div>
+                                                <x-datatable.col class="flex justify-center items-center">
+                                                    @if($result->application->status === ApplicationStatusEnum::ACCEPTED->value)
+                                                        <x-badge :value="__('application-submission.status.'. $result->application->status)" :type="'primary'"/>
+                                                    @elseif($result->application->status === ApplicationStatusEnum::REJECTED->value)
+                                                        <x-badge :value="__('application-submission.status.'. $result->application->status)" :type="'danger'"/>
                                                     @else
-                                                        <div
-                                                            class="inline-flex items-center px-4 py-2 bg-red-600 dark:bg-red-400 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 tracking-widest">
-                                                            {{ __('application-submission.status.'. $result->application->status) }}
-                                                        </div>
+                                                        <x-badge :value="__('application-submission.status.'. $result->application->status)"/>
                                                     @endif
                                                 </x-datatable.col>
                                                 <x-datatable.col :value="$result->final_score * 100"/>
