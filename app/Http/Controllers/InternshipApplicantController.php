@@ -34,7 +34,7 @@ class InternshipApplicantController extends Controller implements HasMiddleware
 
         $data['applicants'] = Application::query()
             ->with('user', 'education')
-            ->whereIn('status', array_slice(ApplicationStatusEnum::toArray(), 2, 3))
+            ->whereIn('status', array_slice(ApplicationStatusEnum::toArray(), 1, 3))
             ->latest()
             ->paginate($perPage);
 

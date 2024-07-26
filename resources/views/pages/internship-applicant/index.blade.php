@@ -41,7 +41,7 @@
                                         <x-datatable.col
                                             :value="__('internship-applicant.gender.'. $applicant->gender)"/>
                                         <x-datatable.col :value="$applicant->education?->education_level"/>
-                                        <x-datatable.col class="flex justify-center items-center">
+                                        <x-datatable.col>
                                             @if($applicant->status === ApplicationStatusEnum::ACCEPTED->value)
                                                 <x-badge :value="__('application-submission.status.'. $applicant->status)" :type="'primary'"/>
                                             @elseif($applicant->status === ApplicationStatusEnum::REJECTED->value)
