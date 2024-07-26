@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('birth_place')->comment('Tempat Lahir');
             $table->date('birth_date')->comment('Tanggal Lahir');
             $table->enum('gender', ['M', 'F'])->comment('Jenis Kelamin');
-            $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending')->comment('Status');
+            $table->enum('status', \App\Enums\ApplicationStatusEnum::toArray())
+                ->default(\App\Enums\ApplicationStatusEnum::DRAFT->value)
+                ->comment('Status');
             $table->timestamps();
         });
     }
