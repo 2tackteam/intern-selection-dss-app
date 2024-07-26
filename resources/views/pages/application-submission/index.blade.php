@@ -1,3 +1,4 @@
+@php use App\Enums\ApplicationStatusEnum; @endphp
 @if(!isset($data))
     @dd('Something wrong!')
 @endif
@@ -37,22 +38,22 @@
                                         <x-datatable.col :value="$application->full_name"/>
                                         <x-datatable.col :value="$application->created_at->translatedFormat('d F Y')"/>
                                         <x-datatable.col>
-                                            @if($application->status === 'pending')
-                                                <div class="inline-flex items-center px-4 py-2 bg-gray-400 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 tracking-widest">
-                                                    {{ __('application-submission.status.'. $application->status) }}
-                                                </div>
-                                            @elseif($application->status === 'accepted')
-                                                <div class="inline-flex items-center px-4 py-2 bg-blue-500 dark:bg-blue-400 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-900 tracking-widest">
-                                                    {{ __('application-submission.status.'. $application->status) }}
-                                                </div>
+                                            @if($application->status === ApplicationStatusEnum::ACCEPTED->value)
+                                                <x-badge
+                                                    :value="__('application-submission.status.'. $application->status)"
+                                                    :type="'primary'"/>
+                                            @elseif($application->status === ApplicationStatusEnum::REJECTED->value)
+                                                <x-badge
+                                                    :value="__('application-submission.status.'. $application->status)"
+                                                    :type="'danger'"/>
                                             @else
-                                                <div class="inline-flex items-center px-4 py-2 bg-red-600 dark:bg-red-400 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 tracking-widest">
-                                                    {{ __('application-submission.status.'. $application->status) }}
-                                                </div>
+                                                <x-badge
+                                                    :value="__('application-submission.status.'. $application->status)"/>
                                             @endif
                                         </x-datatable.col>
                                         <x-datatable.col>
-                                            <x-link-button :size="'sm'" href="{{ route('application-submissions.show', hashIdsEncode($application->id)) }}">
+                                            <x-link-button :size="'sm'"
+                                                           href="{{ route('application-submissions.show', hashIdsEncode($application->id)) }}">
                                                 <i class="far fa-eye mr-2"></i>
                                                 {{__('application-submission.buttons.detail')}}
                                             </x-link-button>
