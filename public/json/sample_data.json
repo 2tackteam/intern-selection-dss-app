@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Bayu Adriansyah S",
+        "email": "bayu@gmail.com",
+        "gender": "M",
+        "major": "Pengembangan Masyarakat Islam",
+        "gpa": 3.53,
+        "education_level": "S1",
+        "institution_name": "UIN Raden Fatah Palembang"
+    },
+    {
+        "name": "Dani Faslah Dinata",
+        "email": "dani@gmail.com",
+        "gender": "F",
+        "major": "Pembangunan Ekonomi dan Pemberdayaan Masyarakat",
+        "gpa": 3.49,
+        "education_level": "D4",
+        "institution_name": "IPDN"
+    },
+    {
+        "name": "Siska Khoirunnisya Saputry",
+        "email": "siska@gmail.com",
+        "gender": "F",
+        "major": "Administrasi Publik",
+        "gpa": 3.49,
+        "education_level": "S1",
+        "institution_name": "Universitas Sriwijaya"
+    },
+    {
+        "name": "Amelia Arthantio",
+        "email": "amelia@gmail.com",
+        "gender": "F",
+        "major": "Manajemen Informatika",
+        "gpa": 3.78,
+        "education_level": "D3",
+        "institution_name": "Politeknik Negeri Sriwijaya"
+    },
+    {
+        "name": "Nanda Jumairoh",
+        "email": "nanda@gmail.com",
+        "gender": "F",
+        "major": "Manajemen Informatika",
+        "gpa": 3.28,
+        "education_level": "D3",
+        "institution_name": "Politeknik Negeri Sriwijaya"
+    },
+    {
+        "name": "Sinta Fitri Handayani",
+        "email": "sinta.@gmail.com",
+        "gender": "F",
+        "major": "Administrasi Perkantoran",
+        "gpa": 87,
+        "education_level": "SMA/SMK",
+        "institution_name": "Negri 1 Palembang"
+    },
+    {
+        "name": "Nyimas Adillah Damayanti",
+        "email": "nyimas@gmail.com",
+        "gender": "F",
+        "major": "Administrasi Perkantoran",
+        "gpa": 85,
+        "education_level": "SMA/SMK",
+        "institution_name": "Tri Dharma Palembang"
+    },
+    {
+        "name": "Agus Firmansyah",
+        "email": "agus@gmail.com",
+        "gender": "M",
+        "major": "Otomatisasi dan Tata Kelola Perkantoran",
+        "gpa": 86,
+        "education_level": "SMA/SMK",
+        "institution_name": "Arinda Palembang"
+    },
+    {
+        "name": "Mayesa",
+        "email": "mayesa@gmail.com",
+        "gender": "F",
+        "major": "Administrasi Perkantoran",
+        "gpa": 82,
+        "education_level": "SMA/SMK",
+        "institution_name": "Tri Dharma Palembang"
+    },
+    {
+        "name": "Doni Irawan",
+        "email": "doni@gmail.com",
+        "gender": "M",
+        "major": "Otomatisasi dan Tata Kelola Perkantoran",
+        "gpa": 81,
+        "education_level": "SMA/SMK",
+        "institution_name": "Arinda Palembang"
+    }
+]
