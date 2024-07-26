@@ -36,7 +36,6 @@ Route::middleware('auth')->group(function () {
             Route::get('/{application}/print', [InternshipApplicantController::class, 'print'])->name('print');
         });
 
-
     // Admin
     Route::prefix('internship-applicant-selections')
         ->name('internship-applicant-selections.')
