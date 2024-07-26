@@ -30,7 +30,7 @@ class InternshipApplicationSelectionResultController extends Controller implemen
 
     public function index(Request $request): View
     {
-        $perPage           = $request->query('perPage', 10);
+        $perPage = $request->query('perPage', 10);
         $applicationStatus = $request->query('application_status');
 
         $data['selection_results'] = Score::query()
@@ -68,6 +68,6 @@ class InternshipApplicationSelectionResultController extends Controller implemen
             __('internship-applicant-selection-result.notify.title.success')
         );
 
-        return Excel::download(new InternshipApplicantSelectionResultExport($applications), 'internship-applicant-' . $time . '.xlsx');
+        return Excel::download(new InternshipApplicantSelectionResultExport($applications), 'internship-applicant-'.$time.'.xlsx');
     }
 }

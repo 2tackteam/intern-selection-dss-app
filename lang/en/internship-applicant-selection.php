@@ -23,7 +23,7 @@ return [
         'page_title' => 'Selection of Internship Applicants',
 
         'title' => 'Selection of Internship Applicants',
-        'subtitle' => "The following is a list of internship applicants that have been sorted by selection score.",
+        'subtitle' => 'The following is a list of internship applicants that have been sorted by selection score.',
     ],
 
     'tables' => [
@@ -58,15 +58,15 @@ return [
             'process_result' => [
                 'success' => 'Successfully save the applicant selection results.',
                 'error' => 'Failed save the applicant selection results.',
-            ]
+            ],
         ],
     ],
 
     'modals' => [
         'confirm_store_applicant_selection_result' => [
             'title' => 'Apakah Anda yakin ingin menyimpan hasil seleksi ini?',
-            'subtitle' => 'Setelah menyimpan hasil seleksi ini, status lamaran akan diperbarui sesuai dengan ketentuan nilai ambang batas yang telah diinput.'
-        ]
-    ]
+            'subtitle' => 'Setelah menyimpan hasil seleksi ini, status lamaran akan diperbarui sesuai dengan ketentuan nilai ambang batas yang telah diinput.',
+        ],
+    ],
 
 ];

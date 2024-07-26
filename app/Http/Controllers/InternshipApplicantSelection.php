@@ -35,8 +35,6 @@ class InternshipApplicantSelection extends Controller implements HasMiddleware
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\View\View
      * @throws \Throwable
      */
     public function index(Request $request): View
@@ -54,9 +52,6 @@ class InternshipApplicantSelection extends Controller implements HasMiddleware
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Actions\AHP\AnalyticalHierarchyProcessInstance $AHPAction
-     * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      * @throws \Throwable
      */
@@ -67,15 +62,15 @@ class InternshipApplicantSelection extends Controller implements HasMiddleware
         $filters = null;
 
         $applicationDateRange = $request->input('application_date_range');
-        $gender               = $request->input('gender', 'all');
+        $gender = $request->input('gender', 'all');
 
         if ($applicationDateRange) {
-            $explode   = explode(' - ', $applicationDateRange);
+            $explode = explode(' - ', $applicationDateRange);
             $startDate = $explode[0];
-            $endDate   = $explode[1] ?? $explode[0];
+            $endDate = $explode[1] ?? $explode[0];
 
             $filters['start_date'] = $startDate;
-            $filters['end_date']   = $endDate;
+            $filters['end_date'] = $endDate;
         }
         if ($gender !== 'all') {
             $filters['gender'] = $gender;
@@ -103,9 +98,9 @@ class InternshipApplicantSelection extends Controller implements HasMiddleware
         $perPage = $request->query('perPage', 10);
 
         if ($this->fetchEvaluationResults()
-                ->count() > 0) {
-            $applicationIds             = $this->fetchEvaluationResults()
-                ->map(fn($item) => hashIdsDecode($item['application_id']))
+            ->count() > 0) {
+            $applicationIds = $this->fetchEvaluationResults()
+                ->map(fn ($item) => hashIdsDecode($item['application_id']))
                 ->toArray();
             $data['evaluation_results'] = Score::query()
                 ->with('application.user', 'application.education')
@@ -114,7 +109,7 @@ class InternshipApplicantSelection extends Controller implements HasMiddleware
                 ->paginate($perPage);
 
             $data['threshold_value'] = round($this->fetchEvaluationResults()
-                    ->avg('final_score') * 100, 2);
+                ->avg('final_score') * 100, 2);
 
         } else {
 
@@ -158,8 +153,7 @@ class InternshipApplicantSelection extends Controller implements HasMiddleware
 
             notify()->success(
                 __('internship-applicant-selection.notify.messages.process_result.success'),
-                __('internship-applicant-selection.notify.title.success'))
-            ;
+                __('internship-applicant-selection.notify.title.success'));
 
             return redirect()->route('internship-applicants.index');
 
