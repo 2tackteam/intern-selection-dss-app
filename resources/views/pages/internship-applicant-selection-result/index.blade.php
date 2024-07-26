@@ -37,10 +37,8 @@
                                 <x-input-label for="application_status" :value="__('labels.application_status')"/>
                                 <x-select-option name="application_status" onchange="this.form.submit()">
                                     <option value="all" @selected(request()->query('application_status') == 'all')>{{ __('internship-applicant.status.all') }}</option>
-                                    @foreach(\App\Enums\ApplicationStatusEnum::toArray() as $value)
-                                        @if(!$loop->first)
-                                            <option value="{{ $value }}" @selected(request()->query('application_status') == $value)>{{ __('internship-applicant.status.'.$value) }}</option>
-                                        @endif
+                                    @foreach(array_slice(\App\Enums\ApplicationStatusEnum::toArray(), 2, 3) as $value)
+                                        <option value="{{ $value }}" @selected(request()->query('application_status') == $value)>{{ __('internship-applicant.status.'.$value) }}</option>
                                     @endforeach
                                 </x-select-option>
                             </div>
