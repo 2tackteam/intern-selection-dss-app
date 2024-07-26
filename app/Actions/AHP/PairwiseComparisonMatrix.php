@@ -16,8 +16,8 @@ trait PairwiseComparisonMatrix
                 if ($i == $j) {
                     $comparisonMatrix[$i][$j] = 1;
                 } else {
-                    $comparisonMatrix[$i][$j] = $data1['weight'] / $data2['weight'];
-                    $comparisonMatrix[$j][$i] = 1 / $comparisonMatrix[$i][$j];
+                    $comparisonMatrix[$i][$j] = $data1['weight'] / $data2['weight']; // Baris
+                    $comparisonMatrix[$j][$i] = 1 / $comparisonMatrix[$i][$j]; // Kolom
                 }
             }
         }

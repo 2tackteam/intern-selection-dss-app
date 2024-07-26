@@ -1,10 +1,10 @@
 @php use App\Enums\ApplicationStatusEnum;use App\Models\Application; @endphp
 <table>
     <tr>
-        <th>{{ __('internship-applicant.selection_result.index.title') }}</th>
+        <th>{{ __('internship-applicant.selection-result.index.title') }}</th>
     </tr>
     <tr>
-        <th>{{ __('internship-applicant.selection_result.index.subtitle') }}</th>
+        <th>{{ __('internship-applicant.selection-result.index.subtitle') }}</th>
     </tr>
 </table>
 

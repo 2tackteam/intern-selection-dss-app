@@ -17,7 +17,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use Throwable;
 
-class InternshipApplicantSelection extends Controller implements HasMiddleware
+class InternshipApplicantSelectionController extends Controller implements HasMiddleware
 {
     use EvaluationResults;
 

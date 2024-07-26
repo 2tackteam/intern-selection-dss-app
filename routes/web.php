@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ApplicationSubmissionController;
 use App\Http\Controllers\InternshipApplicantController;
-use App\Http\Controllers\InternshipApplicantSelection;
+use App\Http\Controllers\InternshipApplicantSelectionController;
 use App\Http\Controllers\InternshipApplicationSelectionResultController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    // Users
     /**
      * Internship Applicants Controller
      */
@@ -35,15 +36,17 @@ Route::middleware('auth')->group(function () {
             Route::get('/{application}/print', [InternshipApplicantController::class, 'print'])->name('print');
         });
 
+
+    // Admin
     Route::prefix('internship-applicant-selections')
         ->name('internship-applicant-selections.')
         ->group(function () {
 
-            Route::get('/', [InternshipApplicantSelection::class, 'index'])->name('index');
-            Route::post('/process', [InternshipApplicantSelection::class, 'processSelection'])->name('process-selection');
+            Route::get('/', [InternshipApplicantSelectionController::class, 'index'])->name('index');
+            Route::post('/process', [InternshipApplicantSelectionController::class, 'processSelection'])->name('process-selection');
 
-            Route::get('/result', [InternshipApplicantSelection::class, 'viewSelectionResult'])->name('result');
-            Route::post('/result/process', [InternshipApplicantSelection::class, 'processSelectionResult'])->name('process-result');
+            Route::get('/result', [InternshipApplicantSelectionController::class, 'viewSelectionResult'])->name('result');
+            Route::post('/result/process', [InternshipApplicantSelectionController::class, 'processSelectionResult'])->name('process-result');
         });
 
     Route::prefix('internship-applicant-selection-results')
