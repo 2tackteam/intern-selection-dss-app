@@ -101,14 +101,21 @@
                                 <x-slot:tbody>
                                     @forelse($data['evaluation_results'] as $result)
                                         @if($result instanceof \App\Models\Score)
+                                            @php($educationLevel = $result->application->education->education_level)
+                                            @if($educationLevel === \App\Enums\EducationLevelEnum::SHS_VHS->value)
+                                                @php($gpa = $result->application->education->gpa)
+                                            @else
+                                                @php($gpa = round($result->application->education->gpa / 100 * 4, 2))
+                                            @endif
+
                                             <x-datatable.row>
                                                 <x-datatable.col :value="$loop->iteration"/>
                                                 <x-datatable.col :value="$result->application->full_name"/>
                                                 <x-datatable.col :value="__('internship-applicant.gender.'. $result->application->gender)"/>
                                                 <x-datatable.col :value="$result->application->user->email"/>
                                                 <x-datatable.col :value="$result->application->education->major"/>
-                                                <x-datatable.col :value="$result->application->education->education_level"/>
-                                                <x-datatable.col :value="$result->application->education->gpa"/>
+                                                <x-datatable.col :value="$educationLevel"/>
+                                                <x-datatable.col :value="$gpa"/>
                                                 <x-datatable.col :value="$result->final_score * 100"/>
                                             </x-datatable.row>
                                         @endif

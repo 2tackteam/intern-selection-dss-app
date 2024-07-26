@@ -46,8 +46,6 @@ Route::middleware('auth')->group(function () {
             Route::post('/result/process', [InternshipApplicantSelection::class, 'processSelectionResult'])->name('process-result');
         });
 
-
-
     Route::prefix('internship-applicant-selection-results')
         ->name('internship-applicant-selection-results.')
         ->group(function () {

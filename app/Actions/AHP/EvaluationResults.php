@@ -17,7 +17,7 @@ trait EvaluationResults
             foreach ($evaluationResults as $result) {
                 Score::create([
                     'application_id' => hashIdsDecode($result['application_id']),
-                    'final_score'    => $result['final_score'],
+                    'final_score' => $result['final_score'],
                 ]);
 
                 // Update application status to 'accepted'

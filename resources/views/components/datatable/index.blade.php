@@ -6,11 +6,11 @@
 @php($noRecordsMessage = "noRecordsMessage_$id")
 
 <form method="GET">
-    @foreach(request()->all() as $key => $value)
-        @if($key !== 'perPage')
-            <input type="hidden" name="{{$key}}" value="{{$value}}">
-        @endif
-    @endforeach
+{{--    @foreach(request()->all() as $key => $value)--}}
+{{--        @if($key !== 'perPage')--}}
+{{--            <input type="hidden" name="{{$key}}" value="{{$value}}">--}}
+{{--        @endif--}}
+{{--    @endforeach--}}
 
     <div class="flex flex-wrap ">
         <div class="flex items-center w-full md:w-1/2 mt-3">

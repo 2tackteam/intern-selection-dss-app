@@ -23,7 +23,7 @@ return [
         'page_title' => 'Seleksi Pelamar Magang',
 
         'title' => 'Hasil Seleksi Pelamar Magang',
-        'subtitle' => "Berikut ini adalah daftar pelamar magang yang telah diurutkan berdasarkan nilai seleksi.",
+        'subtitle' => 'Berikut ini adalah daftar pelamar magang yang telah diurutkan berdasarkan nilai seleksi.',
     ],
 
     'tables' => [
@@ -58,15 +58,15 @@ return [
             'process_result' => [
                 'success' => 'Berhasil menyimpan hasil seleksi pelamar.',
                 'error' => 'Gagal menyimpan hasil seleksi pelamar.',
-            ]
+            ],
         ],
     ],
 
     'modals' => [
         'confirm_store_applicant_selection_result' => [
             'title' => 'Apakah Anda yakin ingin menyimpan hasil seleksi ini?',
-            'subtitle' => 'Setelah menyimpan hasil seleksi ini, status lamaran akan diperbarui sesuai dengan ketentuan nilai ambang batas yang telah diinput.'
-        ]
-    ]
+            'subtitle' => 'Setelah menyimpan hasil seleksi ini, status lamaran akan diperbarui sesuai dengan ketentuan nilai ambang batas yang telah diinput.',
+        ],
+    ],
 
 ];

@@ -50,7 +50,6 @@ return [
         'rejected' => 'Rejected',
     ],
 
-
     'notify' => [
         'title' => [
             'success' => 'Success',
