@@ -4,6 +4,7 @@ namespace App\Actions\AHP;
 
 use App\Enums\EducationLevelEnum;
 use App\Models\Application;
+use App\Models\Criteria;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
@@ -19,31 +20,36 @@ trait EvaluationWeights
                 $score = 0;
 
                 foreach ($criteria as $i => $criterion) {
-                    $criteriaWeight = $criteriaWeights[$i];
+                    if ($criterion instanceof Criteria) {
+                        $criteriaWeight = $criteriaWeights[$i];
 
-                    if ($criterion->name === 'Nilai / GPA' || $i === 0) {
-                        // Nilai rata-rata (GPA)
                         $gpa = $application->education->gpa;
-                        if ($gpa < 30) {
-                            $score += $criteriaWeight * $subCriteriaWeights[$i][0];
-                        } elseif ($gpa <= 70) {
-                            $score += $criteriaWeight * $subCriteriaWeights[$i][1];
-                        } else {
-                            $score += $criteriaWeight * $subCriteriaWeights[$i][2];
-                        }
-                    } elseif ($criterion->name === 'Jurusan' || $i === 1) {
-                        // Annoying Sub Criteria (Major)
-                        // Major (Jurusan)
-                        $score += $criteriaWeight * $subCriteriaWeights[$i][1];
-                    } else {
-                        // Education Level (Tingkat Pendidikan)
+                        $major = $application->education->major;
                         $educationLevel = $application->education->education_level;
-                        if ($educationLevel === EducationLevelEnum::SHS_VHS->value) {
-                            $score += $criteriaWeight * $subCriteriaWeights[$i][0];
-                        } elseif ($educationLevel === EducationLevelEnum::S1->value) {
-                            $score += $criteriaWeight * $subCriteriaWeights[$i][2];
+
+
+                        if ($criterion->name === 'Nilai / GPA') {
+                            // Nilai rata-rata (GPA)
+                            $gpa = $educationLevel === EducationLevelEnum::SHS_VHS->value ? $gpa : round($gpa * 100 / 4, 2);
+
+                            $subCriterionWeight = $criterion->subCriterias()
+                                ->where('min_value', '<=', $gpa)
+                                ->where('max_value', '>=', $gpa)
+                                ?->first()?->weight ?? 1;
+
+                            $score += $criteriaWeight * $subCriterionWeight;
+                        } elseif ($criterion->name === 'Jurusan') {
+                            // Major (Jurusan)
+                            $subCriterionWeight = $criterion->subCriterias()
+                                ->where('name', 'like', "%$major%")
+                                ?->first()?->weight ?? 1;
+                            $score += $criteriaWeight * $subCriterionWeight;
                         } else {
-                            $score += $criteriaWeight * $subCriteriaWeights[$i][1];
+                            // Education Level (Tingkat Pendidikan)
+                            $subCriterionWeight = $criterion->subCriterias()
+                                ->where('name', 'like', "%$educationLevel%")
+                                ?->first()?->weight ?? 1;
+                            $score += $criteriaWeight * $subCriterionWeight;
                         }
                     }
                 }
@@ -74,11 +80,9 @@ trait EvaluationWeights
     {
         return collect($evaluationResults)
             ->map(function ($item, $index) {
-                $rand = $index / 10000;
-
                 return [
                     'application_id' => hashIdsEncode($item['application_id']),
-                    'final_score' => round($item['final_score'] + $rand, 4),
+                    'final_score' => $item['final_score'],
                 ];
             })
             ->sortByDesc('final_score')

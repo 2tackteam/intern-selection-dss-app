@@ -16,7 +16,7 @@ class AnalyticalHierarchyProcessInstance
     public function calculateAHP(?array $filters = null): Collection
     {
         // Step 1: Retrieve Criteria
-        $criteria = Criteria::all();
+        $criteria = Criteria::query()->orderBy('weight')->get();
         $numCriteria = $criteria->count();
 
         // Step 2: Create Pairwise Comparison Matrix for Criteria
@@ -29,7 +29,7 @@ class AnalyticalHierarchyProcessInstance
         // Step 4: Calculate SubCriteria Weights
         $subCriteriaWeights = [];
         foreach ($criteria as $criterion) {
-            $subCriteria = SubCriteria::where('criteria_id', $criterion->id)->get();
+            $subCriteria = SubCriteria::where('criteria_id', $criterion->id)->orderBy('weight')->get();
             $numSubCriteria = $subCriteria->count();
 
             if ($numSubCriteria > 0) {
