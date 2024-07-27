@@ -7,7 +7,9 @@ use App\Actions\AHP\EvaluationResults;
 use App\Enums\ApplicationStatusEnum;
 use App\Http\Requests\InternshipApplicantSelection\ProcessSelectionResultRequest;
 use App\Models\Application;
+use App\Models\Criteria;
 use App\Models\Score;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -109,7 +111,14 @@ class InternshipApplicantSelectionController extends Controller implements HasMi
                 ->paginate($perPage);
 
             $data['threshold_value'] = round($this->fetchEvaluationResults()
-                ->avg('final_score') * 100, 2);
+                ->avg('final_score'), 2);
+
+            $data['criteria'] = Criteria::query()->with('subCriterias')
+                ->whereRelation('subCriterias', function (Builder $query) {
+                    $query->orderBy('weight');
+                })
+                ->orderBy('weight')
+                ->get();
 
         } else {
 
