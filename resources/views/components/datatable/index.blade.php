@@ -1,7 +1,8 @@
-@props(['id', 'collection', 'thead', 'tbody', 'lengthChange' => true, 'searching' => true, 'paging' => true])
+@props(['id', 'collection', 'thead', 'tbody', 'lengthChange' => true, 'searching' => true, 'paging' => true, 'datatable' => true])
 
 @php($lengthAwarePaginator = $collection ?? null)
 
+@php($datatableId = "datatableId_".\Illuminate\Support\Str::ulid()->toString())
 @php($datatableSearch = "datatableSearch_$id")
 @php($noRecordsMessage = "noRecordsMessage_$id")
 
@@ -40,7 +41,7 @@
 
 {{-- Table Section --}}
 <div class="overflow-x-auto">
-    <table class="datatable table-auto border-collapse border-none w-full text-gray-800 dark:text-gray-200">
+    <table class="{{ $datatable ? 'datatable' : 'table-fixed' }} border-collapse border-none w-full text-gray-800 dark:text-gray-200">
         <thead>
         @if(isset($thead))
             {!! $thead !!}
@@ -54,21 +55,23 @@
         </tbody>
     </table>
 
-    @if($collection->count() > 0)
+    @if(isset($collection) && $collection->count() > 0)
         <div id="{{ $noRecordsMessage }}" class="text-gray-800 dark:text-gray-200 text-center mb-5 hidden">
             No matching records found
         </div>
     @endif
 
     {{-- Pagination Section --}}
-    <div class="my-2">
-        {!! $lengthAwarePaginator->links() !!}
-    </div>
+    @if(isset($collection))
+        <div class="my-2">
+            {!! $lengthAwarePaginator->links() !!}
+        </div>
+    @endif
 
 
 </div>
 
-@push('styles')
+@pushonce('styles')
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.0/css/dataTables.dataTables.css"/>
 
     <style>
@@ -98,14 +101,14 @@
         /*    border: 1px solid #e2e8f0; !* Tailwind border-gray-300 *!*/
         /*}*/
     </style>
-@endpush
+@endpushonce
 
-@push('scripts')
+@pushonce('scripts')
     <script src="https://cdn.datatables.net/2.1.0/js/dataTables.js"></script>
-
     <script>
-        var datatable = $('.datatable').DataTable({
+        const datatable = $('.datatable').DataTable({
             order: [],
+            // columnDefs: [],
             processing: true,
             serverSide: false,
             paging: false,          // Disable pagination
@@ -146,4 +149,4 @@
             }
         })
     </script>
-@endpush
+@endpushonce
