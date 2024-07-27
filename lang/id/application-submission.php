@@ -41,6 +41,12 @@ return [
         'title' => 'Input Data Lamaran',
         'subtitle' => 'Pastikan untuk mengisi semua informasi dengan lengkap dan akurat pada formulir data lamaran Anda.',
     ],
+    'edit' => [
+        'page_title' => 'Ubah Pengajuan Lamaran Magang',
+
+        'title' => 'Ubah Data Lamaran',
+        'subtitle' => 'Pastikan untuk mengisi semua informasi dengan lengkap dan akurat pada formulir data lamaran Anda.',
+    ],
 
     'tables' => [
         'headers' => [
@@ -55,6 +61,9 @@ return [
         'create' => 'Tambahkan Pengajuan Magang',
         'detail' => 'Detail',
         'print' => 'Cetak',
+        'edit' => 'Ubah',
+        'delete' => 'Hapus',
+        'submit' => 'Kirim Lamaran',
     ],
 
     'gender' => [
@@ -79,6 +88,29 @@ return [
                 'success' => 'Anda telah menambahkan data pengajuan magang.',
                 'error' => 'Tidak dapat menambahkan data pengajuan magang.',
             ],
+            'submit' => [
+                'success' => 'Anda telah mengirim data pengajuan magang.',
+                'error' => 'Tidak dapat mengirim data pengajuan magang.',
+            ],
+            'update' => [
+                'success' => 'Anda telah mengubah data pengajuan magang.',
+                'error' => 'Tidak dapat mengubah data pengajuan magang.',
+            ],
+            'delete' => [
+                'success' => 'Anda telah menghapus data pengajuan magang.',
+                'error' => 'Tidak dapat menghapus data pengajuan magang.',
+            ],
+        ],
+    ],
+
+    'modals' => [
+        'submit' => [
+            'title' => 'Apakah Anda yakin ingin mengirimkan pengajuan magang?',
+            'subtitle' => 'Data yang telah diajukan tidak dapat diubah ataupun dihapus. Tekan tombol Kirim Lamaran untuk melanjutkan.',
+        ],
+        'delete' => [
+            'title' => 'Apakah Anda yakin ingin menghapus pengajuan lamaran magang Anda?',
+            'subtitle' => 'Data yang dihapus tidak dapat dikembalikan. Tekan tombol hapus untuk mengonfirmasi bahwa Anda ingin menghapus data secara permanen.',
         ],
     ],
 ];

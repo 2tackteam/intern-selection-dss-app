@@ -38,6 +38,8 @@ class PermissionSeeder extends Seeder
 
             'view applications',
             'create applications',
+            'update applications',
+            'delete applications',
             'print applications',
 
             'update profile',
@@ -79,6 +81,8 @@ class PermissionSeeder extends Seeder
 
             'view applications',
             'create applications',
+            'update applications',
+            'delete applications',
             'print applications',
 
             'update profile',
