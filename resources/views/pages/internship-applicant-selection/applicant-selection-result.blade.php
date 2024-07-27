@@ -102,11 +102,7 @@
                                     @forelse($data['evaluation_results'] as $result)
                                         @if($result instanceof \App\Models\Score)
                                             @php($educationLevel = $result->application->education->education_level)
-                                            @if($educationLevel === \App\Enums\EducationLevelEnum::SHS_VHS->value)
-                                                @php($gpa = $result->application->education->gpa)
-                                            @else
-                                                @php($gpa = round($result->application->education->gpa / 100 * 4, 2))
-                                            @endif
+                                            @php($gpa = $result->application->education->gpa)
 
                                             <x-datatable.row>
                                                 <x-datatable.col :value="$loop->iteration"/>
