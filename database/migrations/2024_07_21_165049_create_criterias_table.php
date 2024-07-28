@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name')->comment('Nama Kriteria');
             $table->decimal('weight', 5, 2)->comment('Bobot Kriteria');
+            $table->enum('type', ['string', 'number'])->default('string')->comment('Type Kriteria');
+            $table->string('relation_attribute')->comment('Atribut Relasi - Kriteria');
             $table->timestamps();
         });
     }

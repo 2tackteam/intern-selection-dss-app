@@ -24,9 +24,16 @@ return [
 
         'title' => 'Hasil Seleksi Pelamar Magang',
         'subtitle' => 'Berikut ini adalah daftar pelamar magang yang telah diurutkan berdasarkan nilai seleksi.',
+
+        'final_result' => 'Hasil Akhir',
+        'process_matrix' => 'Matriks Proses',
+
+        'weight_matrix' => 'Matrix Bobot',
+        'pairwise_matrix' => 'Matrix Perbandingan',
+        'criteria_value_matrix' => 'Nilai Kriteria Matrix',
     ],
 
-    'tables' => [
+    'table' => [
         'headers' => [
             'ranking' => 'Ranking',
             'name' => 'Nama Pelamar',
@@ -37,6 +44,10 @@ return [
             'gpa' => 'IPK / Nilai Rata-rata',
             'status' => 'Status',
             'score' => 'Nilai Seleksi',
+
+            'criteria_matrix' => 'Matriks Kriteria',
+            'sub_criteria_matrix' => 'Matriks Sub Kriteria - :value',
+            'weight' => 'Bobot',
         ],
     ],
 

@@ -25,6 +25,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|SubCriteria whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SubCriteria whereWeight($value)
  *
+ * @property string|null $min_value Nilai Minimum Sub Kriteria
+ * @property string|null $max_value Nilai Maximum Sub Kriteria
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|SubCriteria whereMaxValue($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SubCriteria whereMinValue($value)
+ *
  * @mixin \Eloquent
  */
 class SubCriteria extends Model

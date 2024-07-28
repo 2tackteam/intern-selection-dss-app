@@ -73,5 +73,9 @@ trait EvaluationResults
         if ($session->has('evaluation_results')) {
             $session->forget('evaluation_results');
         }
+
+        if ($session->has('result')) {
+            $session->forget('result');
+        }
     }
 }

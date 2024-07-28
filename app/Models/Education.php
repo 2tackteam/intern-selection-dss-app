@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property int $id
- * @property int $applicant_id
+ * @property int $application_id
  * @property string $education_level
  * @property string $institution_name Nama Instansi / Pendidikan
  * @property string $major Jurusan / Program Studi
@@ -17,12 +17,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $gpa IPK atau nilai rata-rata
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Application $applicant
+ * @property-read \App\Models\Application|null $applicant
  *
+ * @method static \Database\Factories\EducationFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Education newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Education newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Education query()
- * @method static \Illuminate\Database\Eloquent\Builder|Education whereApplicantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Education whereApplicationId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Education whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Education whereEducationLevel($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Education whereEndYear($value)
@@ -32,11 +33,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Education whereMajor($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Education whereStartYear($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Education whereUpdatedAt($value)
- *
- * @property int $application_id
- *
- * @method static \Database\Factories\EducationFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Education whereApplicationId($value)
  *
  * @mixin \Eloquent
  */
