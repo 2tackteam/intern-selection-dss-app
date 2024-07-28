@@ -63,6 +63,7 @@ return [
 
     'status' => [
         'all' => 'Semua',
+        'draft' => 'Draft',
         'pending' => 'Menunggu',
         'accepted' => 'Diterima',
         'rejected' => 'Ditolak',

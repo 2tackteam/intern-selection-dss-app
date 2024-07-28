@@ -15,6 +15,8 @@ return [
 
     'index' => [
         'page_title' => 'My Application Submissions',
+
+        'application_exists' => 'The internship application has been registered. You are only allowed to apply once.',
     ],
     'show' => [
         'page_title' => 'Applicant Information',
@@ -40,6 +42,12 @@ return [
         'title' => 'Application Data Input',
         'subtitle' => 'Be sure to fill in all information completely and accurately on your application data form.',
     ],
+    'edit' => [
+        'page_title' => 'Edit Internship Application Submissions',
+
+        'title' => 'Application Data Edit',
+        'subtitle' => 'Be sure to fill in all information completely and accurately on your application data form.',
+    ],
 
     'tables' => [
         'headers' => [
@@ -54,6 +62,9 @@ return [
         'create' => 'Add Internship Application',
         'detail' => 'Details',
         'print' => 'Print',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
+        'submit' => 'Submit Application',
     ],
 
     'gender' => [
@@ -62,6 +73,7 @@ return [
     ],
 
     'status' => [
+        'draft' => 'Draft',
         'pending' => 'Pending',
         'accepted' => 'Accepted',
         'rejected' => 'Rejected',
@@ -77,6 +89,29 @@ return [
                 'success' => 'Application Data successfully added.',
                 'error' => 'Application Data failed to be added.',
             ],
+            'submit' => [
+                'success' => 'Application Data successfully submitted.',
+                'error' => 'Application Data failed to be submitted.',
+            ],
+            'update' => [
+                'success' => 'Application Data successfully updated.',
+                'error' => 'Application Data failed to be updated.',
+            ],
+            'delete' => [
+                'success' => 'Application Data successfully deleted.',
+                'error' => 'Application Data failed to be deleted.',
+            ],
+        ],
+    ],
+
+    'modals' => [
+        'submit' => [
+            'title' => 'Are you sure you want to submit an internship application?',
+            'subtitle' => 'Data that has been submitted cannot be changed or deleted. Press the Submit Application button to proceed.',
+        ],
+        'delete' => [
+            'title' => 'Are you sure you want to delete your internship application?',
+            'subtitle' => 'Deleted data cannot be restored. Press the delete button to confirm that you want to permanently delete the data.',
         ],
     ],
 ];

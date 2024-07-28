@@ -7,11 +7,14 @@ use App\Actions\AHP\EvaluationResults;
 use App\Enums\ApplicationStatusEnum;
 use App\Http\Requests\InternshipApplicantSelection\ProcessSelectionResultRequest;
 use App\Models\Application;
+use App\Models\Criteria;
 use App\Models\Score;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
@@ -79,11 +82,22 @@ class InternshipApplicantSelectionController extends Controller implements HasMi
         // Calculate AHP
         $result = $AHPAction->calculateAHP($filters);
 
-        if ($result->isNotEmpty()) {
+        if (
+            isset($result['comparisonMatrix']) &&
+            isset($result['normalizedMatrix']) &&
+            isset($result['priorityVector']) &&
+
+            isset($result['subComparisonMatrix']) &&
+            isset($result['subNormalizedMatrix']) &&
+            isset($result['subPriorityVector']) &&
+            isset($result['evaluationResults']) && $result['evaluationResults'] instanceof Collection && $result['evaluationResults']->isNotEmpty()
+        ) {
             notify()->success(
                 __('internship-applicant-selection.notify.messages.process_selection.success'),
                 __('internship-applicant-selection.notify.title.success')
             );
+
+            $request->session()->put('result', $result);
 
             return redirect()->route('internship-applicant-selections.result', $filters);
         }
@@ -97,8 +111,7 @@ class InternshipApplicantSelectionController extends Controller implements HasMi
     {
         $perPage = $request->query('perPage', 10);
 
-        if ($this->fetchEvaluationResults()
-            ->count() > 0) {
+        if ($this->fetchEvaluationResults()->count() > 0) {
             $applicationIds = $this->fetchEvaluationResults()
                 ->map(fn ($item) => hashIdsDecode($item['application_id']))
                 ->toArray();
@@ -109,7 +122,14 @@ class InternshipApplicantSelectionController extends Controller implements HasMi
                 ->paginate($perPage);
 
             $data['threshold_value'] = round($this->fetchEvaluationResults()
-                ->avg('final_score') * 100, 2);
+                ->avg('final_score'), 2);
+
+            $data['criteria'] = Criteria::query()->with('subCriterias')
+                ->whereRelation('subCriterias', function (Builder $query) {
+                    $query->orderBy('weight');
+                })
+                ->orderBy('weight')
+                ->get();
 
         } else {
 

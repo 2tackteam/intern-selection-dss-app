@@ -1,3 +1,4 @@
+@php use App\Enums\ApplicationStatusEnum; @endphp
 @if(!isset($data))
     @dd('Something wrong!')
 @endif
@@ -22,7 +23,9 @@
                             {{__('buttons.back')}}
                         </x-link-button>
 
-                        <x-link-button class="mb-4 float-right" href="{{ route('internship-applicants.print', hashIdsEncode($application->id)) }}" target="_blank">
+                        <x-link-button class="mb-4 float-right"
+                                       href="{{ route('internship-applicants.print', hashIdsEncode($application->id)) }}"
+                                       target="_blank">
                             <i class="fas fa-print mr-2"></i>
                             {{__('internship-applicant.buttons.print')}}
                         </x-link-button>
@@ -72,34 +75,32 @@
                                             @if($application->education->education_level === 'SMA/SMK')
                                                 {{ $application->education->gpa }}
                                             @else
-                                                {{ round($application->education->gpa / 100 * 4, 2) }} ({{ $application->education->gpa }})
+                                                {{ round($application->education->gpa / 100 * 4, 2) }}
+                                                ({{ $application->education->gpa }})
                                             @endif
                                         </dd>
                                     </div>
                                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                         <dt class="text-sm font-medium leading-6 text-gray-900 dark:text-gray-100">{{ __('internship-applicant.show.status') }}</dt>
                                         <dd class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-200 sm:col-span-2 sm:mt-0">
-                                            @if($application->status === 'pending')
-                                                <div class="inline-flex items-center px-4 py-2 bg-gray-400 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 tracking-widest">
-                                                    {{ __('internship-applicant.status.'. $application->status) }}
-                                                </div>
-                                            @elseif($application->status === 'accepted')
-                                                <div class="inline-flex items-center px-4 py-2 bg-blue-500 dark:bg-blue-400 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-900 tracking-widest">
-                                                    {{ __('internship-applicant.status.'. $application->status) }}
-                                                </div>
+                                            @if($application->status === ApplicationStatusEnum::ACCEPTED->value)
+                                                <x-badge
+                                                    :value="__('application-submission.status.'. $application->status)"
+                                                    :type="'primary'"/>
+                                            @elseif($application->status === ApplicationStatusEnum::REJECTED->value)
+                                                <x-badge
+                                                    :value="__('application-submission.status.'. $application->status)"
+                                                    :type="'danger'"/>
                                             @else
-                                                <div class="inline-flex items-center px-4 py-2 bg-red-600 dark:bg-red-400 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 tracking-widest">
-                                                    {{ __('internship-applicant.status.'. $application->status) }}
-                                                </div>
+                                                <x-badge
+                                                    :value="__('application-submission.status.'. $application->status)"/>
                                             @endif
-
                                         </dd>
                                     </div>
                                 </dl>
                             </div>
                         </div>
                     @endif
-
 
 
                 </div>

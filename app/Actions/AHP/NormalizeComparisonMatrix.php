@@ -4,7 +4,7 @@ namespace App\Actions\AHP;
 
 trait NormalizeComparisonMatrix
 {
-    private function normalizeMatrix(int $numCriteria, array $comparisonMatrix): array
+    protected function normalizedMatrix(int $numCriteria, array $comparisonMatrix): array
     {
         /**
          * Normalize the Comparison Matrix
@@ -19,14 +19,14 @@ trait NormalizeComparisonMatrix
         $normalizedMatrix = [];
         for ($i = 0; $i < $numCriteria; $i++) {
             for ($j = 0; $j < $numCriteria; $j++) {
-                $normalizedMatrix[$i][$j] = $comparisonMatrix[$i][$j] / $columnSums[$j];
+                $normalizedMatrix[$i][$j] = round($comparisonMatrix[$i][$j] / $columnSums[$j] , 3);
             }
         }
 
         return $normalizedMatrix;
     }
 
-    private function priorityVector(int $numCriteria, array $normalizedMatrix): array
+    protected function priorityVector(int $numCriteria, array $normalizedMatrix): array
     {
         /**
          * Calculate the Priority Vector
@@ -37,15 +37,10 @@ trait NormalizeComparisonMatrix
                 $priorityVector[$i] += $normalizedMatrix[$i][$j];
             }
             $priorityVector[$i] /= $numCriteria;
+
+            $priorityVector[$i] = round($priorityVector[$i], 3);
         }
 
         return $priorityVector;
-    }
-
-    protected function normalizeComparisonMatrix(int $numCriteria, array $comparisonMatrix): array
-    {
-        $normalizedMatrix = $this->normalizeMatrix($numCriteria, $comparisonMatrix);
-
-        return $this->priorityVector($numCriteria, $normalizedMatrix);
     }
 }

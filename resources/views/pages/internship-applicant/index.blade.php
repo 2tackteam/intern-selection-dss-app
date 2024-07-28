@@ -42,21 +42,12 @@
                                             :value="__('internship-applicant.gender.'. $applicant->gender)"/>
                                         <x-datatable.col :value="$applicant->education?->education_level"/>
                                         <x-datatable.col>
-                                            @if($applicant->status === ApplicationStatusEnum::PENDING->value)
-                                                <div
-                                                    class="inline-flex items-center px-4 py-2 bg-gray-400 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 tracking-widest">
-                                                    {{ __('application-submission.status.'. $applicant->status) }}
-                                                </div>
-                                            @elseif($applicant->status === ApplicationStatusEnum::ACCEPTED->value)
-                                                <div
-                                                    class="inline-flex items-center px-4 py-2 bg-blue-500 dark:bg-blue-400 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-900 tracking-widest">
-                                                    {{ __('application-submission.status.'. $applicant->status) }}
-                                                </div>
+                                            @if($applicant->status === ApplicationStatusEnum::ACCEPTED->value)
+                                                <x-badge :value="__('application-submission.status.'. $applicant->status)" :type="'primary'"/>
+                                            @elseif($applicant->status === ApplicationStatusEnum::REJECTED->value)
+                                                <x-badge :value="__('application-submission.status.'. $applicant->status)" :type="'danger'"/>
                                             @else
-                                                <div
-                                                    class="inline-flex items-center px-4 py-2 bg-red-600 dark:bg-red-400 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 tracking-widest">
-                                                    {{ __('application-submission.status.'. $applicant->status) }}
-                                                </div>
+                                                <x-badge :value="__('application-submission.status.'. $applicant->status)"/>
                                             @endif
                                         </x-datatable.col>
                                         <x-datatable.col>

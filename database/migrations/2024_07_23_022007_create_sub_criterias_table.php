@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('criteria_id')->constrained('criterias');
             $table->string('name')->comment('Nama Sub Kriteria');
             $table->decimal('weight', 5, 2)->comment('Bobot Kriteria');
+            $table->decimal('min_value', 5, 2)->comment('Nilai Minimum Sub Kriteria')->nullable();
+            $table->decimal('max_value', 5, 2)->comment('Nilai Maximum Sub Kriteria')->nullable();
             $table->timestamps();
         });
     }

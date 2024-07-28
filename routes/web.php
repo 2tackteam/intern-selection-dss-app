@@ -24,7 +24,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Users
     /**
      * Internship Applicants Controller
      */
@@ -34,8 +33,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/', [InternshipApplicantController::class, 'index'])->name('index');
             Route::get('/{application}', [InternshipApplicantController::class, 'show'])->name('show');
             Route::get('/{application}/print', [InternshipApplicantController::class, 'print'])->name('print');
+            Route::delete('/{application}', [InternshipApplicantController::class, 'destroy'])->name('destroy');
         });
-
 
     // Admin
     Route::prefix('internship-applicant-selections')
@@ -56,6 +55,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/print', [InternshipApplicationSelectionResultController::class, 'print'])->name('print');
         });
 
+    // Users
     /**
      * Application Submissions Controller
      */
@@ -66,6 +66,10 @@ Route::middleware('auth')->group(function () {
             Route::get('/create', [ApplicationSubmissionController::class, 'create'])->name('create');
             Route::post('/', [ApplicationSubmissionController::class, 'store'])->name('store');
             Route::get('/{application}', [ApplicationSubmissionController::class, 'show'])->name('show');
+            Route::patch('/{application}/submit', [ApplicationSubmissionController::class, 'submit'])->name('submit');
+            Route::get('/{application}/edit', [ApplicationSubmissionController::class, 'edit'])->name('edit');
+            Route::patch('/{application}/update', [ApplicationSubmissionController::class, 'update'])->name('update');
+            Route::delete('/{application}', [ApplicationSubmissionController::class, 'destroy'])->name('destroy');
             Route::get('/{application}/print', [ApplicationSubmissionController::class, 'print'])->name('print');
         });
 });

@@ -44,7 +44,7 @@ class InternshipApplicationSelectionResultController extends Controller implemen
         return view('pages.internship-applicant-selection-result.index', compact('data'));
     }
 
-    public function print(Request $request): BinaryFileResponse|RedirectResponse
+    public function print(): BinaryFileResponse|RedirectResponse
     {
         $applications = Application::query()
             ->with('user', 'score', 'education')

@@ -24,9 +24,16 @@ return [
 
         'title' => 'Selection of Internship Applicants',
         'subtitle' => 'The following is a list of internship applicants that have been sorted by selection score.',
+
+        'final_result' => 'Final Results',
+        'process_matrix' => 'Process Matrix ',
+
+        'weight_matrix' => 'Weight Matrix',
+        'pairwise_matrix' => 'Pairwise Matrix',
+        'criteria_value_matrix' => 'Criteria Value Matrix',
     ],
 
-    'tables' => [
+    'table' => [
         'headers' => [
             'ranking' => 'Ranking',
             'name' => 'Applicant Name',
@@ -37,6 +44,13 @@ return [
             'gpa' => 'GPA',
             'status' => 'Status',
             'score' => 'Selection Score',
+
+            'criteria_matrix' => 'Criteria Matrix',
+            'sub_criteria_matrix' => 'Sub Criteria Matrix - :value',
+            'weight' => 'Weight',
+            'amount' => 'Amount',
+            'priority' => 'Priority',
+            'eigen_value' => 'Eigen Value'
         ],
     ],
 
