@@ -12,11 +12,11 @@
                 </x-datatable.row>
             </x-slot:thead>
             <x-slot:tbody>
-                @foreach($data['criteria'] as $criteria)
-                    @if($criteria instanceof Criteria)
+                @foreach($data['criteria'] as $criterion)
+                    @if($criterion instanceof Criteria)
                         <x-datatable.row>
-                            <x-datatable.col :value="$criteria->name"/>
-                            <x-datatable.col :value="round($criteria->weight)"/>
+                            <x-datatable.col :value="$criterion->name"/>
+                            <x-datatable.col :value="round($criterion->weight)"/>
                         </x-datatable.row>
                     @endif
                 @endforeach

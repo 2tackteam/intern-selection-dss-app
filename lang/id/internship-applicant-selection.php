@@ -30,7 +30,7 @@ return [
 
         'weight_matrix' => 'Matrix Bobot',
         'pairwise_matrix' => 'Matrix Perbandingan',
-        'criteria_value_matrix' => 'Nilai Kriteria Matrix',
+        'criteria_value_matrix' => 'Matrix Nilai Kriteria',
     ],
 
     'table' => [
@@ -48,6 +48,9 @@ return [
             'criteria_matrix' => 'Matriks Kriteria',
             'sub_criteria_matrix' => 'Matriks Sub Kriteria - :value',
             'weight' => 'Bobot',
+            'amount' => 'Jumlah',
+            'priority' => 'Prioritas',
+            'eigen_value' => 'Eigen Value'
         ],
     ],
 

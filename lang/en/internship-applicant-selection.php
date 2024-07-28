@@ -48,6 +48,9 @@ return [
             'criteria_matrix' => 'Criteria Matrix',
             'sub_criteria_matrix' => 'Sub Criteria Matrix - :value',
             'weight' => 'Weight',
+            'amount' => 'Amount',
+            'priority' => 'Priority',
+            'eigen_value' => 'Eigen Value'
         ],
     ],
 

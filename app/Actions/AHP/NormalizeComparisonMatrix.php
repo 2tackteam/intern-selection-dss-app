@@ -19,7 +19,7 @@ trait NormalizeComparisonMatrix
         $normalizedMatrix = [];
         for ($i = 0; $i < $numCriteria; $i++) {
             for ($j = 0; $j < $numCriteria; $j++) {
-                $normalizedMatrix[$i][$j] = $comparisonMatrix[$i][$j] / $columnSums[$j];
+                $normalizedMatrix[$i][$j] = round($comparisonMatrix[$i][$j] / $columnSums[$j] , 3);
             }
         }
 
@@ -37,6 +37,8 @@ trait NormalizeComparisonMatrix
                 $priorityVector[$i] += $normalizedMatrix[$i][$j];
             }
             $priorityVector[$i] /= $numCriteria;
+
+            $priorityVector[$i] = round($priorityVector[$i], 3);
         }
 
         return $priorityVector;

@@ -165,7 +165,7 @@
                                         {{ __('internship-applicant-selection.result.weight_matrix') }}
                                     </x-slot:tabTitle>
                                     <x-slot:tabContent>
-                                        @include('pages.internship-applicant-selection.partials.weight-matrix-section')
+                                        @include('pages.internship-applicant-selection.partials.weight-matrix')
                                     </x-slot:tabContent>
                                 </x-tab-panel.tab-content>
 
@@ -183,13 +183,11 @@
                                         {{ __('internship-applicant-selection.result.pairwise_matrix') }}
                                     </x-slot:tabTitle>
                                     <x-slot:tabContent>
-                                        Test 3
+                                        @include('pages.internship-applicant-selection.partials.criteria-value-matrix')
                                     </x-slot:tabContent>
                                 </x-tab-panel.tab-content>
                             </x-slot:tabContents>
                         </x-tab-panel>
-
-
                     </section>
 
                     @pushonce('child-scripts')
