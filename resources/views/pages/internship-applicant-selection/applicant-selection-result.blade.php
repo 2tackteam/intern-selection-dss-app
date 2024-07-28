@@ -126,6 +126,11 @@
                                             @php($educationLevel = $result->application->education->education_level)
                                             @php($gpa = $result->application->education->gpa)
 
+                                            @if($educationLevel !== \App\Enums\EducationLevelEnum::SHS_VHS->value)
+                                                @php($avgGpa = round($gpa /4 * 100, 2))
+                                                @php($gpa = "$gpa ($avgGpa)")
+                                            @endif
+
                                             <x-datatable.row>
                                                 <x-datatable.col :value="$loop->iteration"/>
                                                 <x-datatable.col :value="$result->application->full_name"/>
