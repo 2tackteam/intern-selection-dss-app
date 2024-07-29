@@ -58,6 +58,6 @@ class InternshipApplicantController extends Controller implements HasMiddleware
             ->with('user', 'education')
             ->find(hashIdsDecode($hashedId));
 
-        return view('pages.internship-applicant.print', compact('data'));
+        return view('pages.print.print-page', compact('data'));
     }
 }
