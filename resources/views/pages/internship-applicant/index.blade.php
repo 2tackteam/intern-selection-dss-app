@@ -36,8 +36,8 @@
                                         <x-datatable.col :value="$loop->iteration"/>
                                         <x-datatable.col :value="$applicant->created_at->translatedFormat('d F Y')"/>
                                         <x-datatable.col :value="$applicant->full_name"/>
-                                        <x-datatable.col :value="$applicant->birth_place"/>
                                         <x-datatable.col :value="$applicant->birth_date->translatedFormat('d F Y')"/>
+                                        <x-datatable.col :value="$applicant->birth_place"/>
                                         <x-datatable.col
                                             :value="__('internship-applicant.gender.'. $applicant->gender)"/>
                                         <x-datatable.col :value="$applicant->education?->education_level"/>
