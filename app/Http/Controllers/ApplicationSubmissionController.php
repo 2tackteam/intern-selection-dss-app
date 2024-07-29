@@ -98,7 +98,7 @@ class ApplicationSubmissionController extends Controller implements HasMiddlewar
     {
         $data['application'] = Auth::user()->applications()->where('id', hashIdsDecode($hashedId))->firstOrFail();
 
-        return view('pages.application-submission.print', compact('data'));
+        return view('pages.print.print-page', compact('data'));
     }
 
     public function submit(string $hashedId): RedirectResponse

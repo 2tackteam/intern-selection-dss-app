@@ -1,13 +1,33 @@
 <x-app-layout :navigation="false">
-    <div class="py-12">
+    <div class="pb-12">
         <div class="max-w-full-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+            <div class="px-4 sm:px-8 bg-white dark:bg-gray-800 sm:rounded-lg">
                 <div class="contain-inline-size">
+
+                    <div class="flex flex-row space-x-3 pb-2 border-b-2 border-gray-800 dark:divide-gray-600">
+                        <div class="justify-start">
+                            <img class="w-[80px] h-[100px]" src="{{ asset('images/logo_sumsel.png') }}" alt="logo">
+                        </div>
+                        <div class="justify-center text-center">
+                            <p class="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                                PEMERINTAH PROVINSI SUMATERA SELATAN
+                            </p>
+                            <p class="text-[21px] font-semibold text-gray-900 dark:text-gray-100">
+                                DINAS PEMBERDAYAAN MASYARAKAT DAN DESA
+                            </p>
+                            <p class="text-sm font-normal text-gray-900 dark:text-gray-100">
+                                Jl. Kapten A. Rivai No. 259 Palembang
+                            </p>
+                            <p class="text-sm font-normal text-gray-900 dark:text-gray-100">
+                                Telp/Fax (0711) 314129
+                            </p>
+                        </div>
+                    </div>
 
                     @if($data['application'] instanceof \App\Models\Application)
                         @php($application = $data['application'])
 
-                        <div>
+                        <div class="mt-10">
                             <div class="px-4 sm:px-0">
                                 <h3 class="text-base font-semibold leading-7 text-gray-900 dark:text-gray-100">{{ __('application-submission.show.title') }}</h3>
                                 <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-600 dark:text-gray-400">{{ __('application-submission.show.subtitle') }}</p>
@@ -77,7 +97,7 @@
             /* styles.css */
             @media print {
                 @page {
-                    size: A4;
+                    size: A4 portrait;
                     /*margin: 20mm;*/
                 }
 
