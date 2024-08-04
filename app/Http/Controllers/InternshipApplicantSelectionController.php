@@ -175,7 +175,7 @@ class InternshipApplicantSelectionController extends Controller implements HasMi
                 __('internship-applicant-selection.notify.messages.process_result.success'),
                 __('internship-applicant-selection.notify.title.success'));
 
-            return redirect()->route('internship-applicants.index');
+            return redirect()->route('internship-applicant-selection-results.index');
 
         } catch (Throwable $throwable) {
             notify()->error(
