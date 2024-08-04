@@ -9,7 +9,7 @@ class ProcessSelectionResultRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'threshold_default' => ['required', 'numeric', 'min:1'],
+            'threshold_default' => ['required', 'numeric'],
             'threshold_value' => ['required', 'numeric', 'gte:threshold_default'],
         ];
     }
